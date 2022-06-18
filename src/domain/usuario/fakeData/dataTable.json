@@ -1,0 +1,142 @@
+{
+  "data": {
+    "content": [
+      {
+        "id": "1",
+        "email": "funcionario1@gmail.com",
+        "nome": "Zé das Couves",
+        "dataCriacao": "2001-05-22",
+        "dataNascimento": "1959-01-12",
+        "cidadenascimento": "3304557",
+        "filial": "1",
+        "cargo": "2",
+        "salario": 2350.5
+      },
+      {
+        "id": "15",
+        "email": "funcionario15@gmail.com",
+        "nome": "Maria Farinha",
+        "dataCriacao": "1985-07-12",
+        "dataNascimento": "1978-05-13",
+        "cidadenascimento": "3303302",
+        "filial": "1",
+        "cargo": "1",
+        "salario": 7400.3
+      },
+      {
+        "id": "8",
+        "email": "funcionario8@gmail.com",
+        "nome": "Pedro Laranja",
+        "dataCriacao": "1999-08-07",
+        "dataNascimento": "1989-02-08",
+        "cidadenascimento": "3550308",
+        "filial": "2",
+        "cargo": "3",
+        "salario": 1500.0
+      },
+      {
+        "id": "12",
+        "email": "funcionario12@gmail.com",
+        "nome": "Senor Banana",
+        "dataCriacao": "2011-01-08",
+        "dataNascimento": "1990-05-01",
+        "cidadenascimento": "3304557",
+        "filial": "3",
+        "cargo": "1",
+        "salario": 1350.5
+      },
+      {
+        "id": "42",
+        "email": "funcionario1@gmail.com",
+        "nome": "Zé das Couves",
+        "dataCriacao": "2020-01-13",
+        "dataNascimento": "2000-08-04",
+        "cidadenascimento": "3550308",
+        "filial": "1",
+        "cargo": "3",
+        "salario": 1200.0
+      },
+      {
+        "id": "90",
+        "email": "funcionario90@gmail.com",
+        "nome": "Gerson Codorna",
+        "dataCriacao": "2022-01-15",
+        "dataNascimento": "1984-18-07",
+        "cidadenascimento": "3303302",
+        "filial": "1",
+        "cargo": "1",
+        "salario": 2350.5
+      },
+      {
+        "id": "72",
+        "email": "funcionario72@gmail.com",
+        "nome": "Fernando Pão",
+        "dataCriacao": "2021-05-15",
+        "dataNascimento": "1987-02-19",
+        "cidadenascimento": "3304557",
+        "filial": "1",
+        "cargo": "2",
+        "salario": 2350.5
+      },
+      {
+        "id": "81",
+        "email": "funcionario81@gmail.com",
+        "nome": "Perla Arroz",
+        "dataCriacao": "2009-12-22",
+        "dataNascimento": "1979-02-20",
+        "cidadenascimento": "3550308",
+        "filial": "1",
+        "cargo": "2",
+        "salario": 2350.5
+      },
+      {
+        "id": "17",
+        "email": "funcionario17@gmail.com",
+        "nome": "Melo Panqueca",
+        "dataCriacao": "2001-05-22",
+        "dataNascimento": "1965-03-25",
+        "cidadenascimento": "3548500",
+        "filial": "2",
+        "cargo": "2",
+        "salario": 2350.5
+      },
+      {
+        "id": "79",
+        "email": "funcionario79@gmail.com",
+        "nome": "Zé das Couves",
+        "dataCriacao": "2021-12-01",
+        "dataNascimento": "1991-07-12",
+        "cidadenascimento": "3304557",
+        "filial": "2",
+        "cargo": "1",
+        "salario": 3350.5
+      },
+      {
+        "id": "5",
+        "email": "funcionario5@gmail.com",
+        "nome": "Jorge Queijo",
+        "dataCriacao": "1990-01-01",
+        "dataNascimento": "1998-05-01",
+        "cidadenascimento": "3303302",
+        "filial": "1",
+        "cargo": "4",
+        "salario": 8200.0
+      },
+      {
+        "id": "7",
+        "email": "funcionario1@gmail.com",
+        "nome": "Zé das Couves",
+        "dataCriacao": "1992-08-05",
+        "dataNascimento": "1951-05-10",
+        "cidadenascimento": "3304557",
+        "filial": "1",
+        "cargo": "1",
+        "salario": 5550.4
+      }
+    ],
+    "size": 10,
+    "totalElements": 12,
+    "totalPages": 2,
+    "number": 0
+  }
+}

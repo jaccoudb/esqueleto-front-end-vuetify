@@ -1,0 +1,11 @@
+{
+  "id": "1",
+  "email": "funcionario1@email.com",
+  "nome": "Zé das Couves",
+  "dataCriacao": "2001-05-22",
+  "filial": "1",
+  "cargo": "2",
+  "salario": 2350.50,
+  "dataNascimento": "1959-01-12",
+  "cidadenascimento": "3304557"
+}
