@@ -17,4 +17,13 @@ export default [
       title: 'test.menu',
     },
   },
+  {
+    name: 'manufactor-test',
+    path: '/testes/manufactor',
+    component: () => import('./pages/PageManufactor'),
+    exact: false,
+    meta: {
+      title: 'test.manufactor',
+    },
+  },
 ];

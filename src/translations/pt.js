@@ -462,5 +462,6 @@ export default {
     list: 'Gerenciamento de Testes (Consulta)',
     form: 'Formulario de Testes',
     create: 'Testes Unitários',
+    manufactor: 'Testes Manufaturados',
   },
 };
