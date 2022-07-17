@@ -463,5 +463,8 @@ export default {
     form: 'Formulario de Testes',
     create: 'Testes Unitários',
     manufactor: 'Testes Manufaturados',
+    chat: 'Chat/Mensagens',
+    inbox: 'Inbox',
+    history: 'History',
   },
 };
