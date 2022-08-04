@@ -53,4 +53,22 @@ export default [
       title: 'test.history',
     },
   },
+  {
+    name: 'validate-test',
+    path: '/testes/validate',
+    component: () => import('./pages/PageFormVeeValidate'),
+    exact: false,
+    meta: {
+      title: 'test.validate',
+    },
+  },
+  {
+    name: 'panel-test',
+    path: '/testes/panel',
+    component: () => import('./pages/PageExpansionPanel'),
+    exact: false,
+    meta: {
+      title: 'test.panel',
+    },
+  },
 ];

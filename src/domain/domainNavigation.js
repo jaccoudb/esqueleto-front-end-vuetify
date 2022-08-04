@@ -77,5 +77,19 @@ export default {
       exact: true,
       disabled: false,
     },
+    {
+      icon: 'mdi-format-page-break',
+      key: 'test.validate',
+      to: { name: 'validate-test' },
+      exact: true,
+      disabled: false,
+    },
+    {
+      icon: 'mdi-arrow-expand',
+      key: 'test.panel',
+      to: { name: 'panel-test' },
+      exact: true,
+      disabled: false,
+    },
   ],
 };

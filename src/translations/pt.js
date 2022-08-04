@@ -466,5 +466,7 @@ export default {
     chat: 'Chat/Mensagens',
     inbox: 'Inbox',
     history: 'History',
+    validate: 'Formulário',
+    panel: 'Expansion Panel',
   },
 };

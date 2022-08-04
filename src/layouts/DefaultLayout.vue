@@ -67,7 +67,7 @@
                   >
                     {{ $t(module.name) }}
                   </div>
-                  <img :src="require('@/assets/images/logo.png')" height="36" />
+                  <!-- <img :src="require('@/assets/images/logo.png')" height="36" /> -->
                 </div>
               </router-link>
             </v-toolbar-title>
