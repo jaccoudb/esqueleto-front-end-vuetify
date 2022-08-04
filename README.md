@@ -155,3 +155,15 @@ Arquivo settings.json do vscode ( ctr + p settings.json)
   }
 }
 ```
+
+## Git Semântico
+
+```
+chore: add Oyster build script    //Pequenas alterações que não são novas funcionalidades.
+docs: explain hat wobble          //Semelhante a uma wiki; documentações etc.
+feat: add beta sequence           //Criação de Nova funcionalidade;
+fix: remove error message         //Correção de bugs
+refactor: share logic 4d3d3d3     //Refatoração de um código
+style: convert tabs to spaces     //Alteração em estilos, formatação de código etc.
+test: ensure that increment       //Criação de testes da sua aplicação
+```
