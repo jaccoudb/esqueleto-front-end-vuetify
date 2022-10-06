@@ -1,51 +1,25 @@
 <template>
   <fab-page :title="title" :breadcrumbs-menu="menu" :withCard="true">
-    <v-expansion-panels>
-      <v-expansion-panel>
-        <v-expansion-panel-header @click.native="expansionPanel()">
-          <v-flex xs3>
-            <v-checkbox
-              v-model="checkbox"
-              :label="`Checkbox 1: ${checkbox.toString()}`"
-              @click.native="check($event)"
-            ></v-checkbox>
-          </v-flex>
-        </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          Lorem ipsum dolor.
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
-
-    <!--  -->
-
-    <v-data-table
-      v-model="selected"
-      :headers="headers"
-      :items="desserts"
-      :single-select="singleSelect"
-      item-key="name"
-      show-select
-      class="elevation-1"
-      @toggle-select-all="selectAll"
-    >
-      <template v-slot:top>
-        <v-switch
-          v-model="singleSelect"
-          label="Single select"
-          class="pa-3"
-        ></v-switch>
-      </template>
-    </v-data-table>
+    <!-- <PanelCheckBox />
+    <PanelListagemSimples /> -->
+    <PanelListagemMultipla />
   </fab-page>
 </template>
 
 <script>
 import FabPage from '@/components/fab/page/FabPage.vue';
+import PanelCheckBox from '../panel/PanelCheckBox.vue';
+import PanelListagemSimples from '../panel/PanelListagemSimples.vue';
+import PanelListagemMultipla from '../panel/PanelListagemMultipla.vue';
 
 export default {
   components: {
     FabPage,
+    // eslint-disable-next-line vue/no-unused-components
+    PanelCheckBox,
+    // eslint-disable-next-line vue/no-unused-components
+    PanelListagemSimples,
+    PanelListagemMultipla,
   },
   data() {
     return {
@@ -82,6 +56,7 @@ export default {
           carbs: 24,
           protein: 4.0,
           iron: '1%',
+          bool: true,
         },
         {
           name: 'Ice cream sandwich',
@@ -90,6 +65,7 @@ export default {
           carbs: 37,
           protein: 4.3,
           iron: '1%',
+          bool: false,
         },
         {
           name: 'Eclair',
@@ -98,6 +74,7 @@ export default {
           carbs: 23,
           protein: 6.0,
           iron: '7%',
+          bool: false,
         },
         {
           name: 'Cupcake',
@@ -106,6 +83,7 @@ export default {
           carbs: 67,
           protein: 4.3,
           iron: '8%',
+          bool: false,
         },
         {
           name: 'Gingerbread',
@@ -114,6 +92,7 @@ export default {
           carbs: 49,
           protein: 3.9,
           iron: '16%',
+          bool: false,
         },
         {
           name: 'Jelly bean',
@@ -122,6 +101,7 @@ export default {
           carbs: 94,
           protein: 0.0,
           iron: '0%',
+          bool: false,
         },
         {
           name: 'Lollipop',
@@ -130,6 +110,7 @@ export default {
           carbs: 98,
           protein: 0,
           iron: '2%',
+          bool: false,
         },
         {
           name: 'Honeycomb',
@@ -138,6 +119,7 @@ export default {
           carbs: 87,
           protein: 6.5,
           iron: '45%',
+          bool: false,
         },
         {
           name: 'Donut',
@@ -146,6 +128,7 @@ export default {
           carbs: 51,
           protein: 4.9,
           iron: '22%',
+          bool: false,
         },
         {
           name: 'KitKat',
@@ -154,6 +137,7 @@ export default {
           carbs: 65,
           protein: 7,
           iron: '6%',
+          bool: false,
         },
       ],
     };
