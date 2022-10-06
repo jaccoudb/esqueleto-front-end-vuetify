@@ -1,7 +1,7 @@
 <template>
   <v-form ref="panel">
     <v-expansion-panels v-model="panel" multiple>
-      <v-expansion-panel>
+      <v-expansion-panel v-for="(item, i) in dataTable" :key="i">
         <v-expansion-panel-header>
           <v-layout row>
             <v-card flat class="pl-2"
@@ -22,7 +22,7 @@
           <v-data-table
             v-model="selected"
             :headers="headers"
-            :items="body"
+            :items="item.body"
             :single-select="singleSelect"
             show-select
             class="elevation-1"
@@ -94,37 +94,74 @@ export default {
           value: 'unidade',
         },
       ],
-
-      body: [
+      dataTable: [
         {
-          bodyAnualContratacao: '001/XXXX/2022',
-          requisicao: 'ABC000001PP',
-          nomenclatura: 'ORING',
-          nd: 339040,
-          quantidade: 2,
-          valorReferencia: 'U$ 100.00',
-          valorTotal: 'U$ 200.00',
-          unidade: 'PAMALS',
+          body: [
+            {
+              bodyAnualContratacao: '001/XXXX/2022',
+              requisicao: 'ABC000001PP',
+              nomenclatura: 'ORING',
+              nd: 339040,
+              quantidade: 2,
+              valorReferencia: 'U$ 100.00',
+              valorTotal: 'U$ 200.00',
+              unidade: 'PAMALS',
+            },
+            {
+              bodyAnualContratacao: '001/XXXX/2022',
+              requisicao: 'ABC000004PP',
+              nomenclatura: 'GLASS',
+              nd: 339040,
+              quantidade: 2,
+              valorReferencia: 'U$ 410.00',
+              valorTotal: 'U$ 820.00',
+              unidade: 'PAMALS',
+            },
+            {
+              bodyAnualContratacao: '001/XXXX/2022',
+              requisicao: 'ABC000006PP',
+              nomenclatura: 'KNOB',
+              nd: 339040,
+              quantidade: 5,
+              valorReferencia: 'U$ 65.00',
+              valorTotal: 'U$ 325.00',
+              unidade: 'PAMALS',
+            },
+          ],
         },
         {
-          bodyAnualContratacao: '001/XXXX/2022',
-          requisicao: 'ABC000004PP',
-          nomenclatura: 'GLASS',
-          nd: 339040,
-          quantidade: 2,
-          valorReferencia: 'U$ 410.00',
-          valorTotal: 'U$ 820.00',
-          unidade: 'PAMALS',
-        },
-        {
-          bodyAnualContratacao: '001/XXXX/2022',
-          requisicao: 'ABC000006PP',
-          nomenclatura: 'KNOB',
-          nd: 339040,
-          quantidade: 5,
-          valorReferencia: 'U$ 65.00',
-          valorTotal: 'U$ 325.00',
-          unidade: 'PAMALS',
+          body: [
+            {
+              bodyAnualContratacao: '001/XXXX/2022',
+              requisicao: 'ABC000001PP',
+              nomenclatura: 'ORING',
+              nd: 339040,
+              quantidade: 2,
+              valorReferencia: 'U$ 100.00',
+              valorTotal: 'U$ 200.00',
+              unidade: 'PAMALS',
+            },
+            {
+              bodyAnualContratacao: '001/XXXX/2022',
+              requisicao: 'ABC000004PP',
+              nomenclatura: 'GLASS',
+              nd: 339040,
+              quantidade: 2,
+              valorReferencia: 'U$ 410.00',
+              valorTotal: 'U$ 820.00',
+              unidade: 'PAMALS',
+            },
+            {
+              bodyAnualContratacao: '001/XXXX/2022',
+              requisicao: 'ABC000006PP',
+              nomenclatura: 'KNOB',
+              nd: 339040,
+              quantidade: 5,
+              valorReferencia: 'U$ 65.00',
+              valorTotal: 'U$ 325.00',
+              unidade: 'PAMALS',
+            },
+          ],
         },
       ],
     };
