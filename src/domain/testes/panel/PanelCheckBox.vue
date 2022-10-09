@@ -1,21 +1,13 @@
 <template>
   <v-form>
-    <v-expansion-panels>
-      <v-expansion-panel>
-        <v-expansion-panel-header @click.native="expansionPanel()">
-          <v-flex xs3>
-            <v-checkbox
-              v-model="checkbox"
-              :label="`Checkbox 1: ${checkbox.toString()}`"
-              @click.native="check($event)"
-            ></v-checkbox>
-          </v-flex>
-        </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          Lorem ipsum dolor.
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+    <v-checkbox
+      v-for="(el, index) in checkboxes"
+      :key="index"
+      v-model="checkbox[index]"
+      :value="el"
+      :label="`Checkbox ${index}`"
+      @change="onChange($event, index)"
+    ></v-checkbox>
   </v-form>
 </template>
 
@@ -23,17 +15,23 @@
 export default {
   data() {
     return {
-      checkbox: true,
+      checkboxes: ['Opt 1', 'Opt 2', 'Opt 3', 'Opt 4'],
+      checkbox: [],
     };
   },
   methods: {
-    check: function (e) {
-      e.cancelBubble = true;
-      console.log('checkbox checked');
+    onChange(val, i) {
+      console.log(val, i, this.checkbox);
+      if (val === null || val.length === 0) {
+        // Custom checks in this
+        console.log('Unchecked');
+      } else {
+        console.log('Checked');
+      }
     },
-    expansionPanel: function () {
-      console.log('expansion panel');
-    },
+  },
+  onCheckboxClicked: function (e) {
+    console.log('onCheckboxClicked: ' + e.target.checked);
   },
 };
 </script>
