@@ -42,7 +42,7 @@
                   <!--  -->
                 </v-col>
                 <v-col cols="12" md="10" align="baseline" justify="center">
-                  <v-card-text v-text="lorem"></v-card-text>
+                  <!-- <v-card-text v-text="lorem"></v-card-text> -->
                 </v-col>
               </v-row>
             </v-expansion-panel-header>

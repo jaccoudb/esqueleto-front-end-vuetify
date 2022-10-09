@@ -71,4 +71,13 @@ export default [
       title: 'test.panel',
     },
   },
+  {
+    name: 'treeview-test',
+    path: '/testes/treeview',
+    component: () => import('./pages/PageTreeview'),
+    exact: false,
+    meta: {
+      title: 'test.treeview',
+    },
+  },
 ];

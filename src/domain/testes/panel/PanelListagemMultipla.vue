@@ -1,188 +1,151 @@
 <template>
-  <v-form ref="panel">
+  <v-form ref="panelRegistered">
     <v-expansion-panels v-model="panel" multiple>
       <v-expansion-panel v-for="(item, i) in dataTable" :key="i">
         <v-expansion-panel-header>
           <v-layout row>
-            <v-card flat class="pl-2"
+            <!-- Card Principal -->
+            <v-card flat class="pl-2" color="red"
               ><v-checkbox
-                v-model="selectAll"
-                @click.native="check($event)"
+                @click.native="check($event, item.requisicoes, i)"
                 :ripple="false"
+                :value="selectAll[i]"
+                @change="checkboxUpdated(i)"
               ></v-checkbox>
             </v-card>
             <v-flex cols1></v-flex>
             <v-flex cols11 align-self-center="true" class="pr-2">
-              <h3>0001/OPIA/2022</h3></v-flex
-            >
+              <h3>{{ item.name }}</h3>
+            </v-flex>
           </v-layout>
         </v-expansion-panel-header>
-
+        <!-- Conteúdo -->
         <v-expansion-panel-content>
           <v-data-table
             v-model="selected"
             :headers="headers"
             :items="item.body"
             :single-select="singleSelect"
-            show-select
+            item-key="name"
+            :show-select="showSelect"
+            must-sort
             class="elevation-1"
-            @toggle-select-all="allRowsChanged"
+            @toggle-select-all="allRowsChanged($event, i)"
+            @input="enterSelect($event, item.requisicoes, i)"
           >
+            <!--  -->
+            <!-- <template
+              v-slot:[`item.data-table-select`]="{ item, isSelected, select }"
+            >
+              <v-simple-checkbox
+                :v-model="item.inPams ? item.inPams : isSelected"
+                :value="item.inPams ? item.inPams : isSelected"
+                @input="select($event)"
+                :disabled="item.inPams"
+              ></v-simple-checkbox>
+            </template> -->
+            <!--  -->
           </v-data-table>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
+    <!-- <hr />
+    selectAll:
+    {{ selectAll }}
+    <hr />
+    selected
+    {{ selected }} -->
   </v-form>
 </template>
 
 <script>
+import sobremesaI from '../tables/sobremesaI.json';
+import columns from '../tables/columnsSobremesa';
+
 export default {
+  computed: {
+    dataTable() {
+      return this.sobremesaI.dataTable;
+    },
+  },
+  created() {
+    this.headers = columns;
+  },
   data() {
     return {
+      headers: columns,
+      sobremesaI: sobremesaI,
+      itemsPerPage: 10,
       panel: [],
-      singleSelect: false,
+      selec: false,
       selected: [],
-      selectAll: false,
-
-      headers: [
-        {
-          text: 'Plano Anual de Contratação',
-          align: 'start',
-          sortable: false,
-          value: 'bodyAnualContratacao',
-        },
-        {
-          text: 'Requisição',
-          align: 'start',
-          sortable: false,
-          value: 'requisicao',
-        },
-        {
-          text: 'Nomenclatura/Descrição',
-          align: 'start',
-          sortable: false,
-          value: 'nomenclatura',
-        },
-        {
-          text: 'ND',
-          align: 'start',
-          sortable: false,
-          value: 'nd',
-        },
-        {
-          text: 'Quantidade',
-          align: 'start',
-          sortable: false,
-          value: 'quantidade',
-        },
-        {
-          text: 'Valor de Referência',
-          align: 'start',
-          sortable: false,
-          value: 'valorReferencia',
-        },
-        {
-          text: 'Valor Total',
-          align: 'start',
-          sortable: false,
-          value: 'valorTotal',
-        },
-        {
-          text: 'Unidade Requisitante',
-          align: 'start',
-          sortable: false,
-          value: 'unidade',
-        },
-      ],
-      dataTable: [
-        {
-          body: [
-            {
-              bodyAnualContratacao: '001/XXXX/2022',
-              requisicao: 'ABC000001PP',
-              nomenclatura: 'ORING',
-              nd: 339040,
-              quantidade: 2,
-              valorReferencia: 'U$ 100.00',
-              valorTotal: 'U$ 200.00',
-              unidade: 'PAMALS',
-            },
-            {
-              bodyAnualContratacao: '001/XXXX/2022',
-              requisicao: 'ABC000004PP',
-              nomenclatura: 'GLASS',
-              nd: 339040,
-              quantidade: 2,
-              valorReferencia: 'U$ 410.00',
-              valorTotal: 'U$ 820.00',
-              unidade: 'PAMALS',
-            },
-            {
-              bodyAnualContratacao: '001/XXXX/2022',
-              requisicao: 'ABC000006PP',
-              nomenclatura: 'KNOB',
-              nd: 339040,
-              quantidade: 5,
-              valorReferencia: 'U$ 65.00',
-              valorTotal: 'U$ 325.00',
-              unidade: 'PAMALS',
-            },
-          ],
-        },
-        {
-          body: [
-            {
-              bodyAnualContratacao: '001/XXXX/2022',
-              requisicao: 'ABC000001PP',
-              nomenclatura: 'ORING',
-              nd: 339040,
-              quantidade: 2,
-              valorReferencia: 'U$ 100.00',
-              valorTotal: 'U$ 200.00',
-              unidade: 'PAMALS',
-            },
-            {
-              bodyAnualContratacao: '001/XXXX/2022',
-              requisicao: 'ABC000004PP',
-              nomenclatura: 'GLASS',
-              nd: 339040,
-              quantidade: 2,
-              valorReferencia: 'U$ 410.00',
-              valorTotal: 'U$ 820.00',
-              unidade: 'PAMALS',
-            },
-            {
-              bodyAnualContratacao: '001/XXXX/2022',
-              requisicao: 'ABC000006PP',
-              nomenclatura: 'KNOB',
-              nd: 339040,
-              quantidade: 5,
-              valorReferencia: 'U$ 65.00',
-              valorTotal: 'U$ 325.00',
-              unidade: 'PAMALS',
-            },
-          ],
-        },
-      ],
+      selectAll: [],
+      singleSelect: false,
+      showSelect: true,
     };
   },
   methods: {
-    check(event) {
+    /**
+     * seleção de todas as linhas
+     * @params
+     */
+    allRowsChanged(event, id) {
+      this.selectAll[id] = event.value;
+    },
+    /**
+     * check box externo
+     * @params
+     */
+    // eslint-disable-next-line no-unused-vars
+    check(event, data, id) {
       event.cancelBubble = true;
-      if (this.selectAll) {
-        for (let i in this.body) {
-          this.selected.push(this.body[i]);
-        }
+      console.log('checkbox checked');
+      // this.selectAll[id] = !this.selectAll[id];
+
+      // if (this.selectAll[id]) {
+      //   for (let i in data) {
+      //     this.selected.push(data[i]);
+      //   }
+      // } else {
+      //   this.selected = [];
+      // }
+    },
+    /**
+     * verifica a cada inclusãos
+     * @params
+     */
+    enterSelect(values, data, id) {
+      if (values.length == this.itemsPerPage || values.length == data.length) {
+        this.selectAll[id] = true;
       } else {
-        this.selected = [];
+        this.selectAll[id] = false;
+      }
+
+      if (this.selected.length > 0) {
+        this.$emit('habilaInsercao', true);
+      } else {
+        this.$emit('habilaInsercao', false);
       }
     },
-    allRowsChanged(event) {
-      this.selectAll = event.value;
+    /**
+     * Calcula o valor total da requisição. Multiplica valor pela quantidade.
+     * @param {Number} quantidade
+     * @param {Number} valor
+     * @return {Number} total
+     */
+    getTotal(quantidade, valor) {
+      return quantidade * valor;
     },
-    // Reset the panel
-    none() {
-      this.panel = [];
+    checkboxUpdated(newValue) {
+      console.log(newValue);
+    },
+    incluirEmPams() {
+      this.setRequisicoesPams(this.selected);
+    },
+  },
+  watch: {
+    dataTable(newValue) {
+      this.selectAll = new Array(newValue.length).fill(false);
     },
   },
 };

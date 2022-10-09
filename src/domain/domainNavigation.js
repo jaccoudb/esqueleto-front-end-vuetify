@@ -91,5 +91,12 @@ export default {
       exact: true,
       disabled: false,
     },
+    {
+      icon: 'mdi-file-tree-outline',
+      key: 'test.treeview',
+      to: { name: 'treeview-test' },
+      exact: true,
+      disabled: false,
+    },
   ],
 };

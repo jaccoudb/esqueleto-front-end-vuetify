@@ -468,5 +468,6 @@ export default {
     history: 'History',
     validate: 'Formulário',
     panel: 'Expansion Panel',
+    treeview: 'Treeview',
   },
 };
