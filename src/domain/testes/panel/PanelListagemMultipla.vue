@@ -1,17 +1,17 @@
 <template>
   <v-form ref="panelRegistered">
     <v-expansion-panels v-model="panel" multiple>
-      <v-expansion-panel v-for="(item, i) in dataTable" :key="i">
+      <v-expansion-panel v-for="(item, index) in dataTable" :key="index">
         <v-expansion-panel-header>
           <v-layout row>
             <!-- Card Principal -->
-            <v-card flat class="pl-2" color="red"
-              ><v-checkbox
-                @click.native="check($event, item.requisicoes, i)"
+            <v-card flat class="pl-2" color="red">
+              <v-checkbox
+                v-model="checkbox[index]"
                 :ripple="false"
-                :value="selectAll[i]"
-                @change="checkboxUpdated(i)"
-              ></v-checkbox>
+                @click.native="checkBoxChange($event, item.body, index)"
+              >
+              </v-checkbox>
             </v-card>
             <v-flex cols1></v-flex>
             <v-flex cols11 align-self-center="true" class="pr-2">
@@ -30,31 +30,22 @@
             :show-select="showSelect"
             must-sort
             class="elevation-1"
-            @toggle-select-all="allRowsChanged($event, i)"
-            @input="enterSelect($event, item.requisicoes, i)"
+            @toggle-select-all="allRowsChanged($event, index)"
+            @input="enterSelect($event, item.body, index)"
           >
-            <!--  -->
-            <!-- <template
-              v-slot:[`item.data-table-select`]="{ item, isSelected, select }"
-            >
-              <v-simple-checkbox
-                :v-model="item.inPams ? item.inPams : isSelected"
-                :value="item.inPams ? item.inPams : isSelected"
-                @input="select($event)"
-                :disabled="item.inPams"
-              ></v-simple-checkbox>
-            </template> -->
-            <!--  -->
           </v-data-table>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
-    <!-- <hr />
+    <hr />
+    checkBox:
+    {{ checkbox }}
+    <hr />
     selectAll:
     {{ selectAll }}
     <hr />
     selected
-    {{ selected }} -->
+    {{ selected }}
   </v-form>
 </template>
 
@@ -82,45 +73,56 @@ export default {
       selectAll: [],
       singleSelect: false,
       showSelect: true,
+      checkbox: [],
     };
   },
   methods: {
     /**
-     * seleção de todas as linhas
-     * @params
+     * seleção de todas as linhas da tabela
+     * @params event
+     * @params index da tabela
      */
-    allRowsChanged(event, id) {
-      this.selectAll[id] = event.value;
+    allRowsChanged(event, index) {
+      this.checkbox[index] = event.value;
+      this.selectAll[index] = event.value;
     },
     /**
      * check box externo
      * @params
      */
     // eslint-disable-next-line no-unused-vars
-    check(event, data, id) {
+    checkBoxChange(event, data, index) {
       event.cancelBubble = true;
-      console.log('checkbox checked');
-      // this.selectAll[id] = !this.selectAll[id];
 
-      // if (this.selectAll[id]) {
-      //   for (let i in data) {
-      //     this.selected.push(data[i]);
-      //   }
-      // } else {
-      //   this.selected = [];
-      // }
+      // Parâmetro de checkAll na tabela recebe o mesmo que do checkBox externo.
+      this.selectAll[index] = this.checkbox[index];
+
+      // Adiciona elementos da matriz na matriz selected, ou remove em caso checkBox seja negativo.
+      if (this.selectAll[index] === true) {
+        for (let i in data) {
+          this.selected.push(data[i]);
+        }
+      } else {
+        this.selected = this.selected.filter((a) => !data.includes(a));
+      }
     },
     /**
-     * verifica a cada inclusãos
-     * @params
+     * Verifica a cada select da tabela.
+     * @params values. Eventos do click
+     * @params data. DataTable
+     * @params index. Indice do panel.
      */
-    enterSelect(values, data, id) {
+    enterSelect(values, data, index) {
       if (values.length == this.itemsPerPage || values.length == data.length) {
-        this.selectAll[id] = true;
+        this.selectAll[index] = true;
       } else {
-        this.selectAll[id] = false;
+        this.selectAll[index] = false;
       }
 
+      // checkBox externo recebe o mesmo valor do selectAll da tabela corrente.
+      this.checkbox[index] = this.selectAll[index];
+
+      // Verifica se passui tamanho para emitir comando ao componente pai.
       if (this.selected.length > 0) {
         this.$emit('habilaInsercao', true);
       } else {
@@ -135,12 +137,6 @@ export default {
      */
     getTotal(quantidade, valor) {
       return quantidade * valor;
-    },
-    checkboxUpdated(newValue) {
-      console.log(newValue);
-    },
-    incluirEmPams() {
-      this.setRequisicoesPams(this.selected);
     },
   },
   watch: {

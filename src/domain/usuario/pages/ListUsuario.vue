@@ -39,7 +39,8 @@
         $t('sample.action6')
       }}</v-btn>
     </template>
-    <table-usuario />
+    <!--  -->
+    <TableUsuario />
   </fab-table-page>
 </template>
 
