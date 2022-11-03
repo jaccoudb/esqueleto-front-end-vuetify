@@ -5,9 +5,11 @@
         <v-expansion-panel-header>
           <v-layout row>
             <!-- Card Principal -->
-            <v-card flat class="pl-2" color="red">
+            <v-card flat class="pl-2">
               <v-checkbox
                 v-model="checkbox[index]"
+                hide-details
+                class="shrink mt-0"
                 :ripple="false"
                 @click.native="checkBoxChange($event, item.body, index)"
               >

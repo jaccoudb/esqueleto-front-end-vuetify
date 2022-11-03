@@ -1,6 +1,6 @@
 <template>
   <fab-page :title="title" :breadcrumbs-menu="menu" :withCard="true">
-    <!-- <PanelCheckBox /> -->
+    <PanelCheckBox />
     <!-- <PanelListagemSimples /> -->
     <hr />
     <PanelListagemMultipla />
