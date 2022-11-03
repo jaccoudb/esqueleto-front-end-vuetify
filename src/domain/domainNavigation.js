@@ -98,5 +98,12 @@ export default {
       exact: true,
       disabled: false,
     },
+    {
+      icon: 'mdi-table-large',
+      key: 'test.filter',
+      to: { name: 'filter-table-test' },
+      exact: true,
+      disabled: false,
+    },
   ],
 };

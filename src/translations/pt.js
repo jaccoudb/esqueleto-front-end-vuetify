@@ -469,5 +469,6 @@ export default {
     validate: 'Formulário',
     panel: 'Expansion Panel',
     treeview: 'Treeview',
+    filter: 'Data Table Filter',
   },
 };

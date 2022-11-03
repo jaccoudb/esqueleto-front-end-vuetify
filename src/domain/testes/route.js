@@ -80,4 +80,13 @@ export default [
       title: 'test.treeview',
     },
   },
+  {
+    name: 'filter-table-test',
+    path: '/testes/filter',
+    component: () => import('./pages/PageDataTableFilter'),
+    exact: false,
+    meta: {
+      title: 'test.filter',
+    },
+  },
 ];
