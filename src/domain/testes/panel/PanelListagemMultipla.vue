@@ -34,7 +34,16 @@
             class="elevation-1"
             @toggle-select-all="allRowsChanged($event, index)"
             @input="enterSelect($event, item.body, index)"
+            checkbox-color="cyan"
           >
+            <template v-slot:[`header.data-table-select`]="{ on, props }">
+              <v-simple-checkbox
+                color="purple"
+                v-bind="props"
+                v-on="on"
+                @input="clique($event)"
+              ></v-simple-checkbox>
+            </template>
           </v-data-table>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -48,6 +57,9 @@
     <hr />
     selected
     {{ selected }}
+    <hr />
+    data-table-select:
+    {{ selec }}
   </v-form>
 </template>
 
@@ -115,6 +127,8 @@ export default {
      * @params index. Indice do panel.
      */
     enterSelect(values, data, index) {
+      // console.log(values);
+      // console.log(data);
       if (values.length == this.itemsPerPage || values.length == data.length) {
         this.selectAll[index] = true;
       } else {
@@ -140,6 +154,9 @@ export default {
     getTotal(quantidade, valor) {
       return quantidade * valor;
     },
+    clique(event) {
+      console.log(event);
+    },
   },
   watch: {
     dataTable(newValue) {
@@ -148,3 +165,12 @@ export default {
   },
 };
 </script>
+
+<style>
+.theme--light.v-icon {
+  color: blue !important;
+}
+.v-input--selection-controls__ripple.green--text {
+  color: blue !important;
+}
+</style>
