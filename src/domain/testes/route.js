@@ -28,11 +28,29 @@ export default [
   },
   {
     name: 'chat-test',
-    path: '/testes/chat',
+    path: '/testes/chat/model/1',
     component: () => import('./pages/PageChat'),
     exact: false,
     meta: {
       title: 'test.chat',
+    },
+  },
+  {
+    name: 'chat-test-model-2',
+    path: '/testes/chat/model/2',
+    component: () => import('./pages/PageChatModel2'),
+    exact: false,
+    meta: {
+      title: 'test.chat.model.2',
+    },
+  },
+  {
+    name: 'chat-test-complete',
+    path: '/testes/chat/model/3',
+    component: () => import('./pages/PageChatCompleto'),
+    exact: false,
+    meta: {
+      title: 'test.chat.complete',
     },
   },
   {

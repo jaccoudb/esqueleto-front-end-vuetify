@@ -18,8 +18,8 @@
       <!-- Navigation menu -->
       <main-menu :menu="navigation.menu" />
       <!-- Navigation menu footer -->
-      <template v-slot:append>
-        <!-- Footer navigation links -->
+      <!-- Footer navigation links -->
+      <!-- <template v-slot:append>
         <div class="pa-1 text-center">
           <v-btn
             v-for="(item, index) in navigation.footer"
@@ -32,7 +32,7 @@
             {{ item.key ? $t(item.key) : item.text }}
           </v-btn>
         </div>
-      </template>
+      </template> -->
     </v-navigation-drawer>
 
     <!-- Toolbar -->
@@ -55,7 +55,7 @@
               @click.stop="drawer = !drawer"
             ></v-app-bar-nav-icon>
             <v-toolbar-title class="mx-1 hidden-xs-only">
-              <router-link
+              <!-- <router-link
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit"
               >
@@ -67,29 +67,30 @@
                   >
                     {{ $t(module.name) }}
                   </div>
-                  <!-- <img :src="require('@/assets/images/logo.png')" height="36" /> -->
                 </div>
-              </router-link>
+              </router-link> -->
+              <!-- <img :src="require('@/assets/images/logo.png')" height="36" /> -->
             </v-toolbar-title>
 
             <v-spacer class="d-none d-lg-block"></v-spacer>
 
             <v-spacer class="mx-1 hidden-xs-only"></v-spacer>
             <v-spacer class="d-block d-sm-none"></v-spacer>
-
+            <!--
             <toolbar-language />
-            <toolbar-organizacao-militar />
-            <div :class="[$vuetify.rtl ? 'ml-1' : 'mr-1']">
-              <toolbar-notifications />
-            </div>
+            <toolbar-organizacao-militar /> -->
 
-            <span class="mr-1 d-none d-sm-flex">{{ userName }} </span>
+            <!-- <div :class="[$vuetify.rtl ? 'ml-1' : 'mr-1']">
+              <toolbar-notifications />
+            </div> -->
+
+            <!-- <span class="mr-1 d-none d-sm-flex">{{ userName }} </span> -->
 
             <v-spacer class="d-block d-sm-none"></v-spacer>
 
-            <div class="mr-1 d-none d-sm-flex">
+            <!-- <div class="mr-1 d-none d-sm-flex">
               <toolbar-user />
-            </div>
+            </div> -->
           </div>
         </div>
       </v-card>
@@ -140,9 +141,13 @@ import FabMessage from '@/components/fab/message/FabMessage.vue';
 export default {
   components: {
     MainMenu,
+    // eslint-disable-next-line vue/no-unused-components
     ToolbarUser,
+    // eslint-disable-next-line vue/no-unused-components
     ToolbarLanguage,
+    // eslint-disable-next-line vue/no-unused-components
     ToolbarNotifications,
+    // eslint-disable-next-line vue/no-unused-components
     ToolbarOrganizacaoMilitar,
     Common,
     FabMessage,

@@ -57,9 +57,16 @@ export default {
       ],
     },
     {
+      icon: 'mdi-message-text-fast-outline',
+      key: 'test.chat.model.2',
+      to: { name: 'chat-test-model-2' },
+      exact: true,
+      disabled: false,
+    },
+    {
       icon: 'mdi-message-reply',
-      key: 'test.chat',
-      to: { name: 'chat-test' },
+      key: 'test.chat.complete',
+      to: { name: 'chat-test-complete' },
       exact: true,
       disabled: false,
     },
