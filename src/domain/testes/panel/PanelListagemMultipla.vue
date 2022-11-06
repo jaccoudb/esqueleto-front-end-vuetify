@@ -25,25 +25,16 @@
         <v-expansion-panel-content>
           <v-data-table
             v-model="selected"
+            must-sort
             :headers="headers"
             :items="item.body"
-            :single-select="singleSelect"
             item-key="name"
+            :single-select="singleSelect"
             :show-select="showSelect"
-            must-sort
             class="elevation-1"
             @toggle-select-all="allRowsChanged($event, index)"
             @input="enterSelect($event, item.body, index)"
-            checkbox-color="cyan"
           >
-            <template v-slot:[`header.data-table-select`]="{ on, props }">
-              <v-simple-checkbox
-                color="purple"
-                v-bind="props"
-                v-on="on"
-                @input="clique($event)"
-              ></v-simple-checkbox>
-            </template>
           </v-data-table>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -55,11 +46,8 @@
     selectAll:
     {{ selectAll }}
     <hr />
-    selected
+    selected:
     {{ selected }}
-    <hr />
-    data-table-select:
-    {{ selec }}
   </v-form>
 </template>
 
@@ -97,6 +85,7 @@ export default {
      * @params index da tabela
      */
     allRowsChanged(event, index) {
+      console.log('allRowsChanged');
       this.checkbox[index] = event.value;
       this.selectAll[index] = event.value;
     },
@@ -122,23 +111,24 @@ export default {
     },
     /**
      * Verifica a cada select da tabela.
-     * @params values. Eventos do click
+     * @params items. Array of selected items
      * @params data. DataTable
      * @params index. Indice do panel.
      */
-    enterSelect(values, data, index) {
-      // console.log(values);
-      // console.log(data);
-      if (values.length == this.itemsPerPage || values.length == data.length) {
+    enterSelect(items, data, index) {
+      console.log('-------------------------');
+      // console.log('enterSelect');
+      // console.log(items);
+      console.log(data.length);
+      if (items.length == this.itemsPerPage || items.length == data.length) {
         this.selectAll[index] = true;
+        this.checkbox[index] = true;
       } else {
         this.selectAll[index] = false;
+        this.checkbox[index] = false;
       }
 
-      // checkBox externo recebe o mesmo valor do selectAll da tabela corrente.
-      this.checkbox[index] = this.selectAll[index];
-
-      // Verifica se passui tamanho para emitir comando ao componente pai.
+      // Verifica se possui tamanho para emitir comando ao componente pai.
       if (this.selected.length > 0) {
         this.$emit('habilaInsercao', true);
       } else {
@@ -154,7 +144,7 @@ export default {
     getTotal(quantidade, valor) {
       return quantidade * valor;
     },
-    clique(event) {
+    itemSelected(event) {
       console.log(event);
     },
   },
@@ -165,12 +155,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.theme--light.v-icon {
-  color: blue !important;
-}
-.v-input--selection-controls__ripple.green--text {
-  color: blue !important;
-}
-</style>
