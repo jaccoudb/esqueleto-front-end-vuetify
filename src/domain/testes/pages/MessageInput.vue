@@ -5,11 +5,14 @@
       v-model="input"
       dense
       outlined
-      maxlength="150"
-      :placeholder="`${$t('chat.message')} #${channel}`"
+      :clearable="clearable"
+      :maxlength="maxlength"
+      :placeholder="`${$t('chat.message')}`"
       class="font-weight-bold position-relative"
       hide-details
       append-icon
+      hint="This field uses maxlength attribute"
+      counter
       @click="$emit('input-focus')"
       @keyup.enter="sendMessage"
     >
@@ -28,35 +31,46 @@
 <script>
 /*
 |---------------------------------------------------------------------
-| Input Box Component
+| Mensagem Box Componente
 |---------------------------------------------------------------------
 |
-| Send messages to the channel
+| Envia mensagens ao componente pai
 |
 */
 export default {
   props: {
-    // Current channel name
-    channel: {
-      type: String,
+    // Chave primária do componente
+    chave: {
+      type: [String, Number],
       default: '',
+    },
+    // Tamanho do campo de palavras
+    maxlength: {
+      type: [String, Number],
+      default: 500,
+    },
+    // Define se permite campo limpar
+    clearable: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {
     return {
       input: '',
+      rules: [(v) => v.length <= 25 || 'Max 25 characters'],
     };
   },
   methods: {
-    // Add selected emoji in input
+    // Adiciona emoji selecionado ao input
     insertEmoji(emoji) {
       this.input += emoji;
     },
-    // Send message and clear input
+    // Envia Mensagem e Limpa input
     sendMessage() {
       if (!this.input) return;
 
-      this.$emit('send-message', this.input);
+      this.$emit('send-message', { msg: this.input, chave: this.chave });
       this.input = '';
       this.$refs.input.focus();
     },
