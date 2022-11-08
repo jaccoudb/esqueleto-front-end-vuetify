@@ -6,13 +6,19 @@
       v-for="(message, i) in messages"
       :key="i"
       multiple
-      :disabled="message.interactions.length > 0 ? false : true"
+      :disabled="
+        message.interactions && message.interactions.length > 0 ? false : true
+      "
     >
       <!--  -->
       <v-expansion-panel>
         <!--  -->
         <v-expansion-panel-header
-          :hide-actions="message.interactions.length > 0 ? false : true"
+          :hide-actions="
+            message.interactions && message.interactions.length > 0
+              ? false
+              : true
+          "
         >
           <!--  -->
           <v-row align="center" class="spacer" no-gutters style="width: 100%">
