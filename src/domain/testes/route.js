@@ -27,12 +27,12 @@ export default [
     },
   },
   {
-    name: 'chat-test',
+    name: 'chat-test-model-1',
     path: '/testes/chat/model/1',
-    component: () => import('./pages/PageChat'),
+    component: () => import('./pages/PageChatModel1'),
     exact: false,
     meta: {
-      title: 'test.chat',
+      title: 'chat.modelos.model1',
     },
   },
   {
@@ -41,16 +41,25 @@ export default [
     component: () => import('./pages/PageChatModel2'),
     exact: false,
     meta: {
-      title: 'test.chat.model.2',
+      title: 'chat.modelos.model2',
     },
   },
   {
-    name: 'chat-test-complete',
+    name: 'chat-test-model-3',
     path: '/testes/chat/model/3',
-    component: () => import('./pages/PageChatCompleto'),
+    component: () => import('./pages/PageChatModel3'),
     exact: false,
     meta: {
-      title: 'test.chat.complete',
+      title: 'chat.modelos.model3',
+    },
+  },
+  {
+    name: 'chat-test-model-4',
+    path: '/testes/chat/model/4',
+    component: () => import('./pages/PageChatModel4'),
+    exact: false,
+    meta: {
+      title: 'chat.modelos.model4',
     },
   },
   {
