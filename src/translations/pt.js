@@ -193,7 +193,14 @@ export default {
     online: 'Usuários online ({count})',
     addChannel: 'Adicionar Canal',
     channel: 'Canal | Canais',
+    menu: 'Chat/Fórum',
     message: 'mensagem',
+    modelos: {
+      model1: 'Chat Modelo Inicial',
+      model2: 'Chat Forum',
+      model3: 'Chat Vários Exemplos',
+      model4: 'Chat WhatsApp',
+    },
   },
   email: {
     compose: 'Escrever um email',
