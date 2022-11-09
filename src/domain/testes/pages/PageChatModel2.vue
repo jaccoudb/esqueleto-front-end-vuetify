@@ -1,7 +1,7 @@
 <template>
   <!--  -->
   <!-- <MessageForum /> -->
-  <div class="d-flex flex-grow-1 flex-column">
+  <div>
     <MessageForum
       :avatarSize="64"
       :padraoData="'DD/MM/YYYY HH:mm:ss'"

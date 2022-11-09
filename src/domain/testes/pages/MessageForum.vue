@@ -51,7 +51,7 @@
           </v-row>
         </v-expansion-panel-header>
 
-        <v-expansion-panel-content>
+        <v-expansion-panel-content color="white">
           <v-divider></v-divider>
           <v-list disabled class="text-subtitle-2">
             <v-list-item-group multiple readonly class="mx-2">
@@ -78,11 +78,17 @@
               </template>
             </v-list-item-group>
           </v-list>
+          <v-divider></v-divider>
         </v-expansion-panel-content>
       </v-expansion-panel>
 
       <!-- Campo de inserção mensagem -->
-      <v-card class="d-flex flex-column flex-grow-1 pa-2" v-if="!inputChat">
+      <v-card
+        class="d-flex flex-column flex-grow-1 pa-2"
+        v-if="!inputChat"
+        style="border-radius: 0px"
+        flat
+      >
         <MessageInput
           :chave="message.id"
           @send-message="sendMessage($event)"
