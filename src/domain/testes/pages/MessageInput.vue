@@ -9,13 +9,27 @@
       :clearable="clearable"
       :maxlength="maxlength"
       :placeholder="placeholder"
-      append-icon
       :hint="hintText"
       :counter="counterLength"
+      @keydown.enter.prevent="sendMessage"
       @click="$emit('input-focus')"
-      @:keydown.enter.prevent="sendMessage"
+      @click:append-outer="sendMessage"
     >
+      <!-- Upload Files -->
+      <template v-slot:append>
+        <v-file-input
+          v-model="file"
+          dense
+          hide-input
+          small-chips
+          show-size
+          multiple
+          :rules="inputRules"
+          @change="selectFile"
+        ></v-file-input>
+      </template>
     </v-text-field>
+    <!-- Botão Externo de Enviar -->
     <v-btn
       fab
       small
@@ -72,7 +86,8 @@ export default {
       type: [Boolean, Number, String],
       default: null,
     },
-    /**
+    /**      message: 'Hey!',
+      marker: true,
      * Reduz a altura de entrada
      */
     dense: {
@@ -110,8 +125,19 @@ export default {
   },
   data() {
     return {
+      file: null,
       input: '',
-      rules: [(v) => v.length <= 25 || 'Max 25 characters'],
+      inputRules: [
+        (value) => !!value || 'Por favor, selecione um arquivo',
+        (value) =>
+          !value ||
+          value.type == 'application/pdf' ||
+          'O arquivo deve ser em formato pdf',
+        (value) =>
+          !value ||
+          value.size < 15000000 ||
+          'O arquivo não pode ser maior que 15MB',
+      ],
     };
   },
   methods: {
@@ -130,6 +156,12 @@ export default {
       this.$emit('send-message', { msg: this.input, chave: this.chave });
       this.input = '';
       this.$refs.input.focus();
+    },
+    upload() {
+      alert('click:append');
+    },
+    selectFile(event) {
+      console.log(event);
     },
   },
 };

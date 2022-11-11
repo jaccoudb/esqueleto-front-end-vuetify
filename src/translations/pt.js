@@ -196,7 +196,7 @@ export default {
     menu: 'Chat/Fórum',
     message: 'mensagem',
     modelos: {
-      model1: 'Chat Modelo Inicial',
+      model1: 'Chat Input',
       model2: 'Chat Forum',
       model3: 'Chat Vários Exemplos',
       model4: 'Chat WhatsApp',
