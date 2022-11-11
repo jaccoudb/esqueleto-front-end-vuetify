@@ -13,7 +13,7 @@
       :hint="hintText"
       :counter="counterLength"
       @click="$emit('input-focus')"
-      @keyup.enter="sendMessage"
+      @:keydown.enter.prevent="sendMessage"
     >
     </v-text-field>
     <v-btn

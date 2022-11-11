@@ -40,7 +40,7 @@
               <v-card flat class="background-color:pink">
                 <strong>{{ message.name }}</strong> - {{ message.section }}
                 <small class="float-right">{{
-                  message.data | formatDate(`${padraoData}`)
+                  message.data | formatDate(`${dataFormat}`)
                 }}</small>
               </v-card>
               <!-- Mensagem -->
@@ -63,7 +63,7 @@
                       {{ item.name }} - {{ item.section }}
                     </v-list-item-title>
                     <v-list-item-subtitle class="text-caption text-right">
-                      {{ item.data | formatDate(`${padraoData}`) }}
+                      {{ item.data | formatDate(`${dataFormat}`) }}
                     </v-list-item-subtitle>
 
                     <!-- Corpo da mensagem principal do Fórum -->
@@ -111,7 +111,7 @@
  * @brief Lista Interações entre usuários.
  * @params MessageInput Componente do campo de texto.
  * @params avatarSize Tamanho do avatar. Valor referente ao diâmetro.
- * @params padraoData String padrão que a data apresentará.
+ * @params dataFormat String padrão que a data apresentará.
  * @params messages Array com dados referente as interações.
  * @params userInformations Objeto de informações do usuário que está realizando o comentário.
  * @params inputChat Booleano que habilita/desabilita a caixa de resposta.
@@ -201,7 +201,7 @@ export default {
     /**
      * Padrão que a data apresentará.
      */
-    padraoData: {
+    dataFormat: {
       type: String,
       default: 'DD/MM/YYYY HH:mm:ss',
     },
