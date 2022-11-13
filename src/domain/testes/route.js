@@ -63,6 +63,15 @@ export default [
     },
   },
   {
+    name: 'upload-test',
+    path: '/testes/upload',
+    component: () => import('./pages/PageUpload'),
+    exact: false,
+    meta: {
+      title: 'test.upload',
+    },
+  },
+  {
     name: 'inbox-test',
     path: '/testes/inbox',
     component: () => import('./pages/PageInbox'),

@@ -477,5 +477,6 @@ export default {
     panel: 'Expansion Panel',
     treeview: 'Treeview',
     filter: 'Data Table Filter',
+    upload: 'Upload',
   },
 };

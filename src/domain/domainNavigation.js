@@ -92,6 +92,13 @@ export default {
       ],
     },
     {
+      icon: 'mdi-cloud-upload-outline',
+      key: 'test.upload',
+      to: { name: 'upload-test' },
+      exact: true,
+      disabled: false,
+    },
+    {
       icon: 'mdi-inbox',
       key: 'test.inbox',
       to: { name: 'inbox-test' },
