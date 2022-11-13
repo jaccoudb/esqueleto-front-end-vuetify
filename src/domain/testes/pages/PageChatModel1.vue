@@ -1,11 +1,5 @@
 <template>
-  <!--  -->
-  <!-- <MessageInput /> -->
-  <v-card
-    class="d-flex flex-column flex-grow-1 pt-2 pb-0 pr-2 pl-2 mt-1"
-    style="border-radius: 0px"
-    flat
-  >
+  <div>
     <MessageInput
       :chave="chave"
       @send-message="sendMessage($event)"
@@ -14,9 +8,9 @@
       :hintText="hintText"
       :counterLength="counterLength"
       :placeholder="placeholder"
+      :uploadFiles="upload"
     />
-  </v-card>
-  <!--  -->
+  </div>
 </template>
 
 <script>
@@ -34,6 +28,7 @@ export default {
       hintText: 'hintText',
       counterLength: true,
       placeholder: 'placeholder',
+      upload: true,
     };
   },
   methods: {
