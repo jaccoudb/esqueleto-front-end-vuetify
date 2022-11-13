@@ -19,14 +19,10 @@
 </template>
 
 <script>
-import MessageInput from './MessageInput.vue';
 import MessageForum from './MessageForum.vue';
 
 export default {
   components: {
-    // eslint-disable-next-line vue/no-unused-components
-    MessageInput,
-    // eslint-disable-next-line vue/no-unused-components
     MessageForum,
   },
   data() {
