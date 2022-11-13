@@ -155,6 +155,13 @@ export default {
       default: null,
     },
     /**
+     * Aplica o estilo delineado à entrada.
+     */
+    outlined: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * Informações do usuário que está realizando o comentário.
      */
     userInformations: {
