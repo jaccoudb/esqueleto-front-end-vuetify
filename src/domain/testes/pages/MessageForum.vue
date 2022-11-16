@@ -50,6 +50,20 @@
             </v-col>
           </v-row>
         </v-expansion-panel-header>
+        <!-- Tags -->
+        <v-row>
+          <v-chip-group column class="px-6 pb-2">
+            <v-chip
+              v-for="(tag, i) in message.tags"
+              :key="i"
+              class="ml-0 mr-2 black--text blue lighten-4"
+              small
+              caption
+            >
+              {{ tag }}
+            </v-chip>
+          </v-chip-group>
+        </v-row>
 
         <v-expansion-panel-content color="white">
           <v-divider></v-divider>
@@ -84,7 +98,7 @@
 
       <!-- Campo de inserção mensagem -->
       <v-card
-        class="d-flex flex-column flex-grow-1 pa-2"
+        class="d-flex flex-column flex-grow-1 px-2"
         v-if="!inputChat"
         style="border-radius: 0px"
         flat
@@ -97,6 +111,7 @@
           :hintText="hintText"
           :counterLength="counterLength"
           :placeholder="placeholder"
+          :uploadFiles="uploadFiles"
         />
       </v-card>
     </v-expansion-panels>
@@ -140,6 +155,7 @@ export default {
           section: this.userInformations.section,
           data: new Date().getTime(),
           msg: event.msg,
+          anexo: event.anexo,
         };
         i.interactions.push(newMsg);
       });
@@ -211,6 +227,13 @@ export default {
     placeholder: {
       type: String,
       default: null,
+    },
+    /**
+     * Habilita componente de upload arquivos.
+     */
+    uploadFiles: {
+      type: Boolean,
+      default: false,
     },
     /**
      * Informações do usuário que está realizando o comentário.
