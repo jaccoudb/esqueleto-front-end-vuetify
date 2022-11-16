@@ -104,18 +104,17 @@ export default {
     sendMessage() {
       if (!this.input) return;
 
-      this.$emit('send-message', { msg: this.input, chave: this.chave });
+      this.$emit('send-message', {
+        msg: this.input,
+        chave: this.chave,
+        anexo: this.file,
+      });
       this.input = '';
       this.$refs.input.focus();
     },
     inputFiles(event) {
       this.menu = false;
-      console.log(event);
-    },
-    upload() {
-      alert('click: upload file');
-    },
-    selectFile(event) {
+      this.file = event;
       console.log(event);
     },
   },
