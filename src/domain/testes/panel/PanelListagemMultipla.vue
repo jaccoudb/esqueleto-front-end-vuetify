@@ -17,7 +17,16 @@
             </v-card>
             <v-flex cols1></v-flex>
             <v-flex cols11 align-self-center="true" class="pr-2">
-              <h3>{{ item.name }}</h3>
+              <!-- <v-badge avatar icon="mdi-lock">
+                <strong v-html="item.name"></strong>
+              </v-badge> -->
+              <strong v-html="item.name"></strong>
+              <sup> <v-icon x-small>mdi-message</v-icon></sup>
+              <sup> <v-icon x-small>mdi-chat-processing</v-icon></sup>
+
+              <!-- <v-badge dark overlap content="new" color="blue">
+                <v-icon dark x-large>mdi-email</v-icon>
+              </v-badge> -->
             </v-flex>
           </v-layout>
         </v-expansion-panel-header>
@@ -76,6 +85,7 @@ export default {
       singleSelect: false,
       showSelect: true,
       checkbox: [],
+      badg: false,
     };
   },
   methods: {
