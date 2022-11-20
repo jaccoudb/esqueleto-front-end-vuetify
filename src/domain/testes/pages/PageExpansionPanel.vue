@@ -1,26 +1,127 @@
 <template>
-  <fab-page :title="title" :breadcrumbs-menu="menu" :withCard="true">
-    <!-- <PanelCheckBox /> -->
-    <!-- <PanelListagemSimples /> -->
+  <div class="d-flex flex-column flex-grow-1">
+    <div>
+      <h1>Painel Listagem Simples</h1>
+      <!-- <PanelCheckBox /> -->
+      <PanelListagemSimples />
+      <!-- <PanelListagemMultipla /> -->
+    </div>
+    <div>
+      <h1>Painel Listagem Múltipla</h1>
+      <PanelListagemMultipla />
+    </div>
     <hr />
-    <PanelListagemMultipla />
-  </fab-page>
+    <div class="pt-3">
+      <v-row dense>
+        <v-col cols="12" sm="6" md="3" dense>
+          <v-text-field
+            :label="$t('sample.view.field1')"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="6" md="3" dense>
+          <v-text-field
+            :label="$t('sample.view.field2')"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="6" md="3" dense>
+          <v-text-field
+            :label="$t('sample.view.field3')"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="6" md="3" dense>
+          <v-text-field
+            :label="$t('sample.view.field4')"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+        <!--  -->
+        <v-col cols="12" sm="6" md="3" dense>
+          <v-text-field
+            :label="$t('sample.view.field5')"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="6" md="3" dense>
+          <v-text-field
+            :label="$t('sample.view.field6')"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="6" md="3" dense>
+          <v-text-field
+            :label="$t('sample.view.field7')"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="6" md="3" dense>
+          <v-text-field
+            :label="$t('sample.view.field8')"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <div>
+        <v-data-table
+          :headers="headers"
+          :items="desserts"
+          item-key="name"
+          class="elevation-1"
+        >
+          <template v-slot:[`item.observacao`]="{ item }">
+            <!-- <v-icon>"`${getIcon(item.observacao)}`"</v-icon> -->
+            <div v-if="item.observacao == true">
+              <v-icon>mdi-chat-processing</v-icon>
+            </div>
+            <div v-else>
+              <v-icon>mdi-chat-outline</v-icon>
+            </div>
+          </template>
+
+          <template v-slot:[`item.diligencia`]="{ item }">
+            <v-simple-checkbox v-model="item.diligencia"></v-simple-checkbox>
+          </template>
+
+          <template v-slot:[`item.ganhador`]="{ item }">
+            <div v-if="item.ganhador == true">
+              <v-icon>mdi-trophy</v-icon>
+            </div>
+            <div v-else>
+              <v-simple-checkbox></v-simple-checkbox>
+            </div>
+          </template>
+        </v-data-table>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import FabPage from '@/components/fab/page/FabPage.vue';
 import PanelCheckBox from '../panel/PanelCheckBox.vue';
 import PanelListagemSimples from '../panel/PanelListagemSimples.vue';
 import PanelListagemMultipla from '../panel/PanelListagemMultipla.vue';
+import TableUsuario from '../tables/TableUsuario.vue';
 
 export default {
   components: {
-    FabPage,
     // eslint-disable-next-line vue/no-unused-components
     PanelCheckBox,
     // eslint-disable-next-line vue/no-unused-components
     PanelListagemSimples,
+    // eslint-disable-next-line vue/no-unused-components
     PanelListagemMultipla,
+    // eslint-disable-next-line vue/no-unused-components
+    TableUsuario,
   },
   data() {
     return {
@@ -43,11 +144,54 @@ export default {
           sortable: false,
           value: 'name',
         },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
-        { text: 'Iron (%)', value: 'iron' },
+        {
+          text: 'Calories',
+          align: 'start',
+          sortable: false,
+          value: 'calories',
+        },
+        {
+          text: 'Fat (g)',
+          align: 'start',
+          sortable: false,
+          value: 'fat',
+        },
+        {
+          text: 'Carbs (g)',
+          align: 'start',
+          sortable: false,
+          value: 'carbs',
+        },
+        {
+          text: 'Protein (g)',
+          align: 'start',
+          sortable: false,
+          value: 'protein',
+        },
+        {
+          text: 'Iron (%)',
+          align: 'start',
+          sortable: false,
+          value: 'iron',
+        },
+        {
+          text: 'Observação',
+          align: 'center',
+          sortable: false,
+          value: 'observacao',
+        },
+        {
+          text: 'Diligência',
+          align: 'center',
+          sortable: false,
+          value: 'diligencia',
+        },
+        {
+          text: 'Ganhador',
+          align: 'center',
+          sortable: false,
+          value: 'ganhador',
+        },
       ],
       desserts: [
         {
@@ -58,6 +202,9 @@ export default {
           protein: 4.0,
           iron: '1%',
           bool: true,
+          observacao: true,
+          diligencia: false,
+          ganhador: false,
         },
         {
           name: 'Ice cream sandwich',
@@ -67,6 +214,9 @@ export default {
           protein: 4.3,
           iron: '1%',
           bool: false,
+          observacao: false,
+          diligencia: false,
+          ganhador: true,
         },
         {
           name: 'Eclair',
@@ -76,6 +226,9 @@ export default {
           protein: 6.0,
           iron: '7%',
           bool: false,
+          observacao: false,
+          diligencia: false,
+          ganhador: false,
         },
         {
           name: 'Cupcake',
@@ -85,6 +238,9 @@ export default {
           protein: 4.3,
           iron: '8%',
           bool: false,
+          observacao: true,
+          diligencia: false,
+          ganhador: false,
         },
         {
           name: 'Gingerbread',
@@ -94,6 +250,9 @@ export default {
           protein: 3.9,
           iron: '16%',
           bool: false,
+          observacao: false,
+          diligencia: false,
+          ganhador: false,
         },
         {
           name: 'Jelly bean',
@@ -103,42 +262,9 @@ export default {
           protein: 0.0,
           iron: '0%',
           bool: false,
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: '2%',
-          bool: false,
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: '45%',
-          bool: false,
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: '22%',
-          bool: false,
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: '6%',
-          bool: false,
+          observacao: false,
+          diligencia: false,
+          ganhador: false,
         },
       ],
     };
@@ -157,6 +283,11 @@ export default {
       } else {
         alert('deselected all');
       }
+    },
+
+    getIcon(icon) {
+      if (icon == 0 || icon == false) return 'mdi-message';
+      else return 'mdi-chat-processing';
     },
   },
 };
