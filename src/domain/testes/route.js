@@ -125,4 +125,13 @@ export default [
       title: 'test.filter',
     },
   },
+  {
+    name: 'login-test',
+    path: '/testes/login',
+    component: () => import('./pages/PageLogin'),
+    exact: false,
+    meta: {
+      title: 'test.login',
+    },
+  },
 ];

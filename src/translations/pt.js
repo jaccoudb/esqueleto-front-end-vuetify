@@ -39,6 +39,7 @@ export default {
   confirm: {
     delete: 'Tem certeza que desaja excluir este registro?',
     warning: 'Atenção',
+    tag: 'Confirmar',
   },
   cotacao: {
     menu: 'Cotação',
@@ -478,5 +479,6 @@ export default {
     treeview: 'Treeview',
     filter: 'Data Table Filter',
     upload: 'Upload',
+    login: 'Login',
   },
 };

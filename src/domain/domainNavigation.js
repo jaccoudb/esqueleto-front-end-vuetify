@@ -140,5 +140,12 @@ export default {
       exact: true,
       disabled: false,
     },
+    {
+      icon: 'mdi-account',
+      key: 'test.login',
+      to: { name: 'login-test' },
+      exact: true,
+      disabled: false,
+    },
   ],
 };
