@@ -21,8 +21,8 @@
                 <strong v-html="item.name"></strong>
               </v-badge> -->
               <strong v-html="item.name"></strong>
-              <sup> <v-icon x-small>mdi-message</v-icon></sup>
-              <sup> <v-icon x-small>mdi-chat-processing</v-icon></sup>
+              <!-- <sup> <v-icon x-small>mdi-message</v-icon></sup>
+              <sup> <v-icon x-small>mdi-chat-processing</v-icon></sup> -->
 
               <!-- <v-badge dark overlap content="new" color="blue">
                 <v-icon dark x-large>mdi-email</v-icon>
@@ -43,6 +43,7 @@
             class="elevation-1"
             @toggle-select-all="allRowsChanged($event, index)"
             @input="enterSelect($event, item.body, index)"
+            @item-selected="itensSelect($event)"
           >
           </v-data-table>
         </v-expansion-panel-content>
@@ -95,7 +96,7 @@ export default {
      * @params index da tabela
      */
     allRowsChanged(event, index) {
-      console.log('allRowsChanged');
+      console.log('allRowsChanged: ', index);
       this.checkbox[index] = event.value;
       this.selectAll[index] = event.value;
     },
@@ -125,18 +126,19 @@ export default {
      * @params data. DataTable
      * @params index. Indice do panel.
      */
+    // eslint-disable-next-line no-unused-vars
     enterSelect(items, data, index) {
-      console.log('-------------------------');
-      // console.log('enterSelect');
-      // console.log(items);
+      // console.log('-------------------------');
+      console.log('enterSelect: ', index);
       console.log(data.length);
-      if (items.length == this.itemsPerPage || items.length == data.length) {
-        this.selectAll[index] = true;
-        this.checkbox[index] = true;
-      } else {
-        this.selectAll[index] = false;
-        this.checkbox[index] = false;
-      }
+      console.log(items.length);
+      // if (items.length == this.itemsPerPage || items.length == data.length) {
+      //   this.selectAll[index] = true;
+      //   this.checkbox[index] = true;
+      // } else {
+      //   this.selectAll[index] = false;
+      //   this.checkbox[index] = false;
+      // }
 
       // Verifica se possui tamanho para emitir comando ao componente pai.
       if (this.selected.length > 0) {
@@ -154,7 +156,8 @@ export default {
     getTotal(quantidade, valor) {
       return quantidade * valor;
     },
-    itemSelected(event) {
+    // eslint-disable-next-line no-unused-vars
+    itensSelect(event) {
       console.log(event);
     },
   },

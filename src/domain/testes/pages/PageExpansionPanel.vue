@@ -1,17 +1,17 @@
 <template>
   <div class="d-flex flex-column flex-grow-1">
-    <div>
-      <h1>Painel Listagem Simples</h1>
-      <!-- <PanelCheckBox /> -->
-      <PanelListagemSimples />
-      <!-- <PanelListagemMultipla /> -->
-    </div>
-    <div>
-      <h1>Painel Listagem Múltipla</h1>
-      <PanelListagemMultipla />
-    </div>
-    <hr />
-    <div class="pt-3">
+    <!-- <div> -->
+    <!-- <h1>Painel Listagem Simples</h1> -->
+    <!-- <PanelCheckBox /> -->
+    <!-- <PanelListagemSimples /> -->
+    <!-- <PanelListagemMultipla /> -->
+    <!-- </div> -->
+    <!-- <div> -->
+    <!-- <h1>Painel Listagem Múltipla</h1> -->
+    <PanelListagemMultipla />
+    <!-- </div> -->
+    <!-- <hr /> -->
+    <!-- <div class="pt-3">
       <v-row dense>
         <v-col cols="12" sm="6" md="3" dense>
           <v-text-field
@@ -41,7 +41,6 @@
             dense
           ></v-text-field>
         </v-col>
-        <!--  -->
         <v-col cols="12" sm="6" md="3" dense>
           <v-text-field
             :label="$t('sample.view.field5')"
@@ -79,7 +78,6 @@
           class="elevation-1"
         >
           <template v-slot:[`item.observacao`]="{ item }">
-            <!-- <v-icon>"`${getIcon(item.observacao)}`"</v-icon> -->
             <div v-if="item.observacao == true">
               <v-icon>mdi-chat-processing</v-icon>
             </div>
@@ -102,7 +100,7 @@
           </template>
         </v-data-table>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
