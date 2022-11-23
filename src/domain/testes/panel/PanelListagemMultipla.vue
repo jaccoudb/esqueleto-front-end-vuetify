@@ -45,6 +45,14 @@
             @input="enterSelect($event, item.body, index)"
             @item-selected="itensSelect($event)"
           >
+            <template v-slot:[`header.data-table-select`]="{ props }">
+              <v-checkbox
+                color="purple"
+                :value="props.value"
+                :indeterminate="props.indeterminate"
+              >
+              </v-checkbox>
+            </template>
           </v-data-table>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -159,6 +167,9 @@ export default {
     // eslint-disable-next-line no-unused-vars
     itensSelect(event) {
       console.log(event);
+    },
+    teste(e) {
+      console.log(e);
     },
   },
   watch: {
