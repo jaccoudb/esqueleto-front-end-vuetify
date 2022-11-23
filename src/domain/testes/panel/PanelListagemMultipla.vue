@@ -50,6 +50,7 @@
                 color="purple"
                 :value="props.value"
                 :indeterminate="props.indeterminate"
+                @update:indeterminate="teste($event)"
               >
               </v-checkbox>
             </template>
