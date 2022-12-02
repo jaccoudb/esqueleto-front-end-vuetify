@@ -49,18 +49,27 @@
                 v-on="on"
                 v-ripple
               ></v-simple-checkbox> -->
-              <!-- <v-checkbox
+              <v-checkbox
                 :input-value="props.value"
                 :indeterminate="props.indeterminate"
                 @change="on.input"
+                v-model="check"
               >
-              </v-checkbox> -->
-              <v-simple-checkbox
+              </v-checkbox>
+              <!-- updateCheckall: function(){
+      if(this.languages.length == this.langsdata.length){
+         this.isCheckAll = true;
+      }else{
+         this.isCheckAll = false;
+      }
+    }, -->
+
+              <!-- <v-simple-checkbox
                 color="purple"
                 :input-value="props.value"
                 :indeterminate="props.indeterminate"
                 v-ripple
-              ></v-simple-checkbox>
+              ></v-simple-checkbox> -->
             </template>
           </v-data-table>
         </v-expansion-panel-content>
@@ -102,6 +111,7 @@ export default {
       singleSelect: false,
       showSelect: true,
       checkbox: [],
+      check: '',
     };
   },
   methods: {
@@ -186,7 +196,7 @@ export default {
     dataTable(newValue) {
       this.selectAll = new Array(newValue.length).fill(false);
     },
-    toogleSelectAll(newValue) {
+    check(newValue) {
       console.log(newValue);
     },
   },
