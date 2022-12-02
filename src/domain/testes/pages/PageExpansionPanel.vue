@@ -8,7 +8,7 @@
     <!-- </div> -->
     <!-- <div> -->
     <!-- <h1>Painel Listagem Múltipla</h1> -->
-    <PanelListagemMultipla />
+    <PanelListagemMultiplaCheckBox />
     <!-- </div> -->
     <!-- <hr /> -->
     <!-- <div class="pt-3">
@@ -108,6 +108,7 @@
 import PanelCheckBox from '../panel/PanelCheckBox.vue';
 import PanelListagemSimples from '../panel/PanelListagemSimples.vue';
 import PanelListagemMultipla from '../panel/PanelListagemMultipla.vue';
+import PanelListagemMultiplaCheckBox from '../panel/PanelListagemMultiplaCheckBox.vue';
 import TableUsuario from '../tables/TableUsuario.vue';
 
 export default {
@@ -118,6 +119,8 @@ export default {
     PanelListagemSimples,
     // eslint-disable-next-line vue/no-unused-components
     PanelListagemMultipla,
+    // eslint-disable-next-line vue/no-unused-components
+    PanelListagemMultiplaCheckBox,
     // eslint-disable-next-line vue/no-unused-components
     TableUsuario,
   },

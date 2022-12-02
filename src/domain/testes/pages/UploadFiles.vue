@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- Input Component -->
+    {{ currentFile }}
     <v-row align="start" class="spacer" no-gutters style="width: 100%">
       <v-col cols="auto">
         <v-file-input
@@ -117,6 +118,7 @@ export default {
      * Seleciona arquivo(s) para lista de upload.
      */
     selectFile(file) {
+      console.log(file);
       this.currentFile = file;
     },
     /**

@@ -17,16 +17,7 @@
             </v-card>
             <v-flex cols1></v-flex>
             <v-flex cols11 align-self-center="true" class="pr-2">
-              <!-- <v-badge avatar icon="mdi-lock">
-                <strong v-html="item.name"></strong>
-              </v-badge> -->
               <strong v-html="item.name"></strong>
-              <!-- <sup> <v-icon x-small>mdi-message</v-icon></sup>
-              <sup> <v-icon x-small>mdi-chat-processing</v-icon></sup> -->
-
-              <!-- <v-badge dark overlap content="new" color="blue">
-                <v-icon dark x-large>mdi-email</v-icon>
-              </v-badge> -->
             </v-flex>
           </v-layout>
         </v-expansion-panel-header>
@@ -46,13 +37,30 @@
             @item-selected="itensSelect($event)"
           >
             <template v-slot:[`header.data-table-select`]="{ on, props }">
-              <v-checkbox
+              <!-- <v-checkbox
+                :input-value="teste(props.value, index)"
+                :indeterminate="props.indeterminate"
+                @change="on.input"
+              >
+              </v-checkbox> -->
+              <!-- <v-simple-checkbox
+                color="purple"
+                v-bind="props"
+                v-on="on"
+                v-ripple
+              ></v-simple-checkbox> -->
+              <!-- <v-checkbox
                 :input-value="props.value"
                 :indeterminate="props.indeterminate"
                 @change="on.input"
-                :update:indeterminate="teste"
               >
-              </v-checkbox>
+              </v-checkbox> -->
+              <v-simple-checkbox
+                color="purple"
+                :input-value="props.value"
+                :indeterminate="props.indeterminate"
+                v-ripple
+              ></v-simple-checkbox>
             </template>
           </v-data-table>
         </v-expansion-panel-content>
@@ -82,7 +90,6 @@ export default {
   },
   created() {
     this.headers = columns;
-    console.log(this.body);
   },
   data() {
     return {
@@ -90,65 +97,11 @@ export default {
       sobremesaI: sobremesaI,
       itemsPerPage: 10,
       panel: [],
-      selec: false,
       selected: [],
       selectAll: [],
       singleSelect: false,
       showSelect: true,
       checkbox: [],
-      badg: false,
-      body: [
-        {
-          name: 'Frozen Yogurt',
-          calories: '159',
-          fat: '6.0',
-          carbs: '24',
-          protein: '4.0',
-          iron: '1%',
-          disabled: false,
-          id: 1,
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: '237',
-          fat: '9.0',
-          carbs: '37',
-          protein: '4.3',
-          iron: '1%',
-          disabled: false,
-          id: 2,
-        },
-        {
-          name: 'Eclair',
-          calories: '262',
-          fat: '16.0',
-          carbs: '23',
-          protein: '6.0',
-          iron: '7%',
-          disabled: false,
-          id: 3,
-        },
-        {
-          name: 'Cupcake',
-          calories: '305',
-          fat: '3.7',
-          carbs: '67',
-          protein: '4.3',
-          iron: '8%',
-          disabled: false,
-          id: 4,
-        },
-        {
-          name: 'Gingerbread',
-          calories: '356',
-          fat: '16.0',
-          carbs: '49',
-          protein: '3.9',
-          iron: '16%',
-          disabled: false,
-          id: 5,
-        },
-      ],
     };
   },
   methods: {
@@ -168,6 +121,7 @@ export default {
      */
     // eslint-disable-next-line no-unused-vars
     checkBoxChange(event, data, index) {
+      // console.log('checkBoxChange');
       event.cancelBubble = true;
 
       // Parâmetro de checkAll na tabela recebe o mesmo que do checkBox externo.
@@ -190,24 +144,23 @@ export default {
      */
     // eslint-disable-next-line no-unused-vars
     enterSelect(items, data, index) {
-      // console.log('-------------------------');
-      console.log('enterSelect: ', index);
-      console.log(data.length);
-      console.log(items.length);
-      // if (items.length == this.itemsPerPage || items.length == data.length) {
-      //   this.selectAll[index] = true;
-      //   this.checkbox[index] = true;
+      // // console.log('-------------------------');
+      // console.log('enterSelect: ', index);
+      // console.log(data.length);
+      // console.log(items.length);
+      // // if (items.length == this.itemsPerPage || items.length == data.length) {
+      // //   this.selectAll[index] = true;
+      // //   this.checkbox[index] = true;
+      // // } else {
+      // //   this.selectAll[index] = false;
+      // //   this.checkbox[index] = false;
+      // // }
+      // // Verifica se possui tamanho para emitir comando ao componente pai.
+      // if (this.selected.length > 0) {
+      //   this.$emit('habilaInsercao', true);
       // } else {
-      //   this.selectAll[index] = false;
-      //   this.checkbox[index] = false;
+      //   this.$emit('habilaInsercao', false);
       // }
-
-      // Verifica se possui tamanho para emitir comando ao componente pai.
-      if (this.selected.length > 0) {
-        this.$emit('habilaInsercao', true);
-      } else {
-        this.$emit('habilaInsercao', false);
-      }
     },
     /**
      * Calcula o valor total da requisição. Multiplica valor pela quantidade.
@@ -220,16 +173,21 @@ export default {
     },
     // eslint-disable-next-line no-unused-vars
     itensSelect(event) {
-      console.log(event);
+      // console.log(event);
     },
-    teste(e) {
-      console.log('teste');
-      console.log(e);
+    // eslint-disable-next-line no-unused-vars
+    teste(props, index) {
+      console.log(props);
+      this.checkbox[index] = props.value;
+      return props;
     },
   },
   watch: {
     dataTable(newValue) {
       this.selectAll = new Array(newValue.length).fill(false);
+    },
+    toogleSelectAll(newValue) {
+      console.log(newValue);
     },
   },
 };

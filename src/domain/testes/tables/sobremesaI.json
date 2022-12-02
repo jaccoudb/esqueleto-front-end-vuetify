@@ -10,7 +10,8 @@
           "carbs": "24",
           "protein": "4.0",
           "iron": "1%",
-          "disabled": false
+          "disabled": false,
+          "id": 1
         },
         {
           "name": "Ice cream sandwich",
@@ -19,7 +20,8 @@
           "carbs": "37",
           "protein": "4.3",
           "iron": "1%",
-          "disabled": false
+          "disabled": false,
+          "id": 2
         },
         {
           "name": "Eclair",
@@ -28,7 +30,8 @@
           "carbs": "23",
           "protein": "6.0",
           "iron": "7%",
-          "disabled": false
+          "disabled": false,
+          "id": 3
         },
         {
           "name": "Cupcake",
@@ -37,7 +40,8 @@
           "carbs": "67",
           "protein": "4.3",
           "iron": "8%",
-          "disabled": false
+          "disabled": false,
+          "id": 4
         },
         {
           "name": "Gingerbread",
@@ -46,7 +50,8 @@
           "carbs": "49",
           "protein": "3.9",
           "iron": "16%",
-          "disabled": false
+          "disabled": false,
+          "id": 5
         }
       ]
     },
@@ -60,7 +65,8 @@
           "carbs": "94",
           "protein": "0.0",
           "iron": "0%",
-          "disabled": false
+          "disabled": false,
+          "id": 1
         },
         {
           "name": "Lollipop",
@@ -69,7 +75,8 @@
           "carbs": "98",
           "protein": "0",
           "iron": "2%",
-          "disabled": false
+          "disabled": false,
+          "id": 1
         },
         {
           "name": "Honeycomb",
@@ -78,7 +85,8 @@
           "carbs": "87",
           "protein": "6.5",
           "iron": "45%",
-          "disabled": false
+          "disabled": false,
+          "id": 1
         },
         {
           "name": "Donut",
@@ -87,7 +95,8 @@
           "carbs": "51",
           "protein": "4.9",
           "iron": "22%",
-          "disabled": false
+          "disabled": false,
+          "id": 1
         }
       ]
     }
