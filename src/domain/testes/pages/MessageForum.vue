@@ -59,8 +59,9 @@
               class="ml-0 mr-2 black--text blue lighten-4"
               small
               caption
+              @click="alarm(tag.msg)"
             >
-              {{ tag }}
+              {{ tag.name }}
             </v-chip>
           </v-chip-group>
         </v-row>
@@ -162,6 +163,9 @@ export default {
 
       this.$emit('forum-message', newMsg);
       this.$emit('forum-user-message', usuario);
+    },
+    alarm(value) {
+      alert(value + ': Turning on alarm...');
     },
   },
   props: {
