@@ -53,7 +53,9 @@
                 :input-value="props.value"
                 :indeterminate="props.indeterminate"
                 @change="on.input"
-                v-model="check"
+                @update:indeterminate="
+                  teste($event, index, item.body, selected, props.indeterminate)
+                "
               >
               </v-checkbox>
               <!-- updateCheckall: function(){
@@ -186,10 +188,13 @@ export default {
       // console.log(event);
     },
     // eslint-disable-next-line no-unused-vars
-    teste(props, index) {
+    teste(props, index, data, dataT, ind) {
       console.log(props);
-      this.checkbox[index] = props.value;
-      return props;
+      console.log(data);
+      console.log(dataT);
+      console.log(ind);
+      // this.checkbox[index] = props;
+      // return props.indeterminate;
     },
   },
   watch: {
