@@ -14,7 +14,6 @@
       @keydown.enter.prevent="sendMessage"
       @click="$emit('input-focus')"
       @click:append-outer="sendMessage"
-      @click:append="teste"
     >
       <template v-slot:append v-if="uploadFiles">
         <v-menu
