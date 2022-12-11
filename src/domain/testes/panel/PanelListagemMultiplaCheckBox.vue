@@ -34,44 +34,17 @@
             class="elevation-1"
             @toggle-select-all="allRowsChanged($event, index)"
             @input="enterSelect($event, item.body, index)"
-            @item-selected="itensSelect($event)"
           >
             <template v-slot:[`header.data-table-select`]="{ on, props }">
-              <!-- <v-checkbox
-                :input-value="teste(props.value, index)"
-                :indeterminate="props.indeterminate"
-                @change="on.input"
-              >
-              </v-checkbox> -->
-              <!-- <v-simple-checkbox
-                color="purple"
-                v-bind="props"
-                v-on="on"
-                v-ripple
-              ></v-simple-checkbox> -->
               <v-checkbox
                 :input-value="props.value"
                 :indeterminate="props.indeterminate"
                 @change="on.input"
                 @update:indeterminate="
-                  teste($event, index, item.body, selected, props.indeterminate)
+                  updateCheckBox($event, index, item.body, selected)
                 "
               >
               </v-checkbox>
-              <!-- updateCheckall: function(){
-      if(this.languages.length == this.langsdata.length){
-         this.isCheckAll = true;
-      }else{
-         this.isCheckAll = false;
-      }
-    }, -->
-
-              <!-- <v-simple-checkbox
-                color="purple"
-                :input-value="props.value"
-                :indeterminate="props.indeterminate"
-                v-ripple
-              ></v-simple-checkbox> -->
             </template>
           </v-data-table>
         </v-expansion-panel-content>
@@ -101,19 +74,19 @@ export default {
   },
   created() {
     this.headers = columns;
+    this.checkbox = Array(this.dataTable.length).fill(false);
   },
   data() {
     return {
+      checkbox: [],
       headers: columns,
-      sobremesaI: sobremesaI,
       itemsPerPage: 10,
       panel: [],
-      selected: [],
       selectAll: [],
-      singleSelect: false,
+      selected: [],
       showSelect: true,
-      checkbox: [],
-      check: '',
+      singleSelect: false,
+      sobremesaI: sobremesaI,
     };
   },
   methods: {
@@ -124,6 +97,8 @@ export default {
      */
     allRowsChanged(event, index) {
       console.log('allRowsChanged: ', index);
+      // this.checkbox.splice(index, 0, event.value);
+      // this.selectAll.splice(index, 0, event.value);
       this.checkbox[index] = event.value;
       this.selectAll[index] = event.value;
     },
@@ -131,7 +106,6 @@ export default {
      * check box externo
      * @params
      */
-    // eslint-disable-next-line no-unused-vars
     checkBoxChange(event, data, index) {
       // console.log('checkBoxChange');
       event.cancelBubble = true;
@@ -160,19 +134,11 @@ export default {
       // console.log('enterSelect: ', index);
       // console.log(data.length);
       // console.log(items.length);
-      // // if (items.length == this.itemsPerPage || items.length == data.length) {
-      // //   this.selectAll[index] = true;
-      // //   this.checkbox[index] = true;
-      // // } else {
-      // //   this.selectAll[index] = false;
-      // //   this.checkbox[index] = false;
-      // // }
-      // // Verifica se possui tamanho para emitir comando ao componente pai.
-      // if (this.selected.length > 0) {
-      //   this.$emit('habilaInsercao', true);
-      // } else {
-      //   this.$emit('habilaInsercao', false);
-      // }
+      if (this.selected.length > 0) {
+        this.$emit('habilaInsercao', true);
+      } else {
+        this.$emit('habilaInsercao', false);
+      }
     },
     /**
      * Calcula o valor total da requisição. Multiplica valor pela quantidade.
@@ -183,26 +149,35 @@ export default {
     getTotal(quantidade, valor) {
       return quantidade * valor;
     },
+    /**
+     * Verifica se o evento do checkbox interno é indeterminado e, caso negativo/positivo,
+     * efetua mudança no checkbox mais externo.
+     * @param {Boolean} event
+     * @param {Number} index
+     * @param {Array} dataFields
+     * @param {Array} dataSelected
+     */
     // eslint-disable-next-line no-unused-vars
-    itensSelect(event) {
-      // console.log(event);
-    },
-    // eslint-disable-next-line no-unused-vars
-    teste(props, index, data, dataT, ind) {
-      console.log(props);
-      console.log(data);
-      console.log(dataT);
-      console.log(ind);
-      // this.checkbox[index] = props;
-      // return props.indeterminate;
+    updateCheckBox(event, index, dataFields, dataSelected) {
+      console.log('updateCheckBox');
+      console.log(event);
+
+      let difference = dataFields.filter((x) => !dataSelected.includes(x));
+      // console.log(difference);
+      if (difference.length === 0) {
+        this.checkbox.splice(index, 1, true);
+      }
+      if (event === true && this.checkbox[index] === true) {
+        // console.log('object é true');
+        this.checkbox.splice(index, 1, false);
+      }
+
+      return event;
     },
   },
   watch: {
     dataTable(newValue) {
       this.selectAll = new Array(newValue.length).fill(false);
-    },
-    check(newValue) {
-      console.log(newValue);
     },
   },
 };

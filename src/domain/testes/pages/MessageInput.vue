@@ -31,7 +31,14 @@
               v-bind="attrs"
               v-on="on"
             >
-              <v-icon>mdi-cloud-upload-outline</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-icon v-bind="attrs" v-on="on"
+                    >mdi-cloud-upload-outline</v-icon
+                  >
+                </template>
+                <span>Insira a mensagem antes do upload</span>
+              </v-tooltip>
             </v-btn>
           </template>
           <!--  -->
