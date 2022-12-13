@@ -1,107 +1,23 @@
 <template>
-  <div class="d-flex flex-column flex-grow-1">
-    <!-- <div> -->
-    <!-- <h1>Painel Listagem Simples</h1> -->
-    <!-- <PanelCheckBox /> -->
-    <!-- <PanelListagemSimples /> -->
-    <!-- <PanelListagemMultipla /> -->
-    <!-- </div> -->
-    <!-- <div> -->
-    <!-- <h1>Painel Listagem Múltipla</h1> -->
-    <PanelListagemMultiplaCheckBox />
-    <!-- </div> -->
-    <!-- <hr /> -->
-    <!-- <div class="pt-3">
-      <v-row dense>
-        <v-col cols="12" sm="6" md="3" dense>
-          <v-text-field
-            :label="$t('sample.view.field1')"
-            outlined
-            dense
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="6" md="3" dense>
-          <v-text-field
-            :label="$t('sample.view.field2')"
-            outlined
-            dense
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="6" md="3" dense>
-          <v-text-field
-            :label="$t('sample.view.field3')"
-            outlined
-            dense
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="6" md="3" dense>
-          <v-text-field
-            :label="$t('sample.view.field4')"
-            outlined
-            dense
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="6" md="3" dense>
-          <v-text-field
-            :label="$t('sample.view.field5')"
-            outlined
-            dense
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="6" md="3" dense>
-          <v-text-field
-            :label="$t('sample.view.field6')"
-            outlined
-            dense
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="6" md="3" dense>
-          <v-text-field
-            :label="$t('sample.view.field7')"
-            outlined
-            dense
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="6" md="3" dense>
-          <v-text-field
-            :label="$t('sample.view.field8')"
-            outlined
-            dense
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <div>
-        <v-data-table
-          :headers="headers"
-          :items="desserts"
-          item-key="name"
-          class="elevation-1"
-        >
-          <template v-slot:[`item.observacao`]="{ item }">
-            <div v-if="item.observacao == true">
-              <v-icon>mdi-chat-processing</v-icon>
-            </div>
-            <div v-else>
-              <v-icon>mdi-chat-outline</v-icon>
-            </div>
-          </template>
-
-          <template v-slot:[`item.diligencia`]="{ item }">
-            <v-simple-checkbox v-model="item.diligencia"></v-simple-checkbox>
-          </template>
-
-          <template v-slot:[`item.ganhador`]="{ item }">
-            <div v-if="item.ganhador == true">
-              <v-icon>mdi-trophy</v-icon>
-            </div>
-            <div v-else>
-              <v-simple-checkbox></v-simple-checkbox>
-            </div>
-          </template>
-        </v-data-table>
-      </div>
-    </div> -->
-  </div>
+  <v-card class="d-flex flex-column flex-grow-1">
+    <v-card-text class="pt-0">
+      <!-- <div> -->
+      <!-- <h1>Painel Listagem Simples</h1> -->
+      <!-- <PanelCheckBox /> -->
+      <!-- <PanelListagemSimples /> -->
+      <!-- <PanelListagemMultipla /> -->
+      <!-- </div> -->
+      <!-- <div> -->
+      <!-- <h1>Painel Listagem Múltipla</h1> -->
+      <PanelListagemMultiplaCheckBox />
+      <!-- </div> -->
+      <v-divider class="my-2"></v-divider>
+      <v-icon class="mr-2" small> mdi-clock </v-icon>
+      <span class="text-caption grey--text font-weight-light"
+        >last registration: {{ new Date() }}</span
+      >
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
