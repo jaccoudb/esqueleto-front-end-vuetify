@@ -23,11 +23,25 @@
 import MessageForum from './MessageForum.vue';
 
 export default {
+  beforeDestroy() {
+    clearTimeout(this.timeoutGenerator);
+  },
   components: {
     MessageForum,
   },
+  created() {
+    console.log(this.messages);
+
+    // this.messages.forEach((i) => {
+    //   if (i.id == 2) {
+    //     i.tags = i.tags.filter((j) => j.id !== 2.1);
+    //   }
+    // });
+  },
   data() {
     return {
+      // demo random message timeout
+      timeoutGenerator: null,
       messages: [
         {
           id: 1,
@@ -62,20 +76,20 @@ export default {
             },
           ],
           tags: [
-            { name: 'Work', msg: 1.1 },
-            { name: 'Home Improvement', msg: 1.2 },
-            { name: 'Vacation', msg: 1.3 },
-            { name: 'Food', msg: 1.4 },
-            { name: 'Drawers', msg: 1.5 },
-            { name: 'Shopping', msg: 1.6 },
-            { name: 'Art', msg: 1.7 },
-            { name: 'Tech', msg: 1.8 },
-            { name: 'Creative Writing', msg: 1.9 },
-            { name: 'Drawers', msg: 1.1 },
-            { name: 'Shopping', msg: 1.11 },
-            { name: 'Art', msg: 1.12 },
-            { name: 'Tech', msg: 1.13 },
-            { name: 'Creative Writing', msg: 1.14 },
+            { name: 'Work', msg: 1.1, id: 1.1 },
+            { name: 'Home Improvement', msg: 1.2, id: 1.2 },
+            { name: 'Vacation', msg: 1.3, id: 1.3 },
+            { name: 'Food', msg: 1.4, id: 1.4 },
+            { name: 'Drawers', msg: 1.5, id: 1.5 },
+            { name: 'Shopping', msg: 1.6, id: 1.6 },
+            { name: 'Art', msg: 1.7, id: 1.7 },
+            { name: 'Tech', msg: 1.8, id: 1.8 },
+            { name: 'Creative Writing', msg: 1.9, id: 1.9 },
+            { name: 'Drawers', msg: 1.1, id: 1.1 },
+            { name: 'Shopping', msg: 1.11, id: 1.11 },
+            { name: 'Art', msg: 1.12, id: 1.12 },
+            { name: 'Tech', msg: 1.13, id: 1.13 },
+            { name: 'Creative Writing', msg: 1.14, id: 1.14 },
           ],
         },
         {
@@ -88,7 +102,10 @@ export default {
           response: true,
           readonly: true,
           interactions: [],
-          tags: [{ name: 'Work', msg: 2 }],
+          tags: [
+            { name: 'Work', msg: 2, id: 2.1 },
+            { name: 'Tech', msg: 1.13, id: 2.2 },
+          ],
         },
         {
           id: 3,
@@ -115,6 +132,22 @@ export default {
     userReceived(event) {
       console.log(event);
     },
+    startChannel() {
+      console.log('startChannel');
+      clearTimeout(this.timeoutGenerator);
+      this.sendRandom();
+    },
+    sendRandom() {
+      console.log(this.timeoutGenerator);
+      this.timeoutGenerator = setTimeout(() => {
+        console.log('Recarregou');
+        this.sendRandom();
+      }, 10000);
+    },
+  },
+  mounted() {
+    console.log('mounted');
+    this.startChannel(this.$route.params.id);
   },
 };
 </script>
