@@ -134,4 +134,13 @@ export default [
       title: 'test.login',
     },
   },
+  {
+    name: 'skeleton-test',
+    path: '/testes/skeleton',
+    component: () => import('./pages/PageSkeleton'),
+    exact: false,
+    meta: {
+      title: 'test.skeleton',
+    },
+  },
 ];

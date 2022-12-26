@@ -480,5 +480,6 @@ export default {
     filter: 'Data Table Filter',
     upload: 'Upload',
     login: 'Login',
+    skeleton: 'Skeleton Loaders',
   },
 };

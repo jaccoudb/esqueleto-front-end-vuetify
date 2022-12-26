@@ -147,5 +147,12 @@ export default {
       exact: true,
       disabled: false,
     },
+    {
+      icon: 'mdi-skull-scan-outline',
+      key: 'test.skeleton',
+      to: { name: 'skeleton-test' },
+      exact: true,
+      disabled: false,
+    },
   ],
 };
