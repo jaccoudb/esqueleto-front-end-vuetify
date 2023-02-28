@@ -482,4 +482,8 @@ export default {
     login: 'Login',
     skeleton: 'Skeleton Loaders',
   },
+  upload: {
+    input: 'Upload Input',
+    excel: 'Upload Excel',
+  },
 };

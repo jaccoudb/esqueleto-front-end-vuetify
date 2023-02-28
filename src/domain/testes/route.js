@@ -63,12 +63,21 @@ export default [
     },
   },
   {
-    name: 'upload-test',
-    path: '/testes/upload',
+    name: 'upload-input',
+    path: '/testes/upload-input',
     component: () => import('./pages/PageUpload'),
     exact: false,
     meta: {
-      title: 'test.upload',
+      title: 'upload.input',
+    },
+  },
+  {
+    name: 'upload-excel',
+    path: '/testes/upload-excel',
+    component: () => import('./pages/PageUploadExcel'),
+    exact: false,
+    meta: {
+      title: 'upload.excel',
     },
   },
   {

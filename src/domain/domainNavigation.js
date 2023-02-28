@@ -93,8 +93,15 @@ export default {
     },
     {
       icon: 'mdi-cloud-upload-outline',
-      key: 'test.upload',
-      to: { name: 'upload-test' },
+      key: 'upload.input',
+      to: { name: 'upload-input' },
+      exact: true,
+      disabled: false,
+    },
+    {
+      icon: 'mdi-cloud-upload-outline',
+      key: 'upload.excel',
+      to: { name: 'upload-excel' },
       exact: true,
       disabled: false,
     },

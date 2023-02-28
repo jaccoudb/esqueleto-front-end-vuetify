@@ -1,6 +1,7 @@
 <template>
   <fab-panel-toggle title="usuario.detail.detail1" :filterOpened="true">
     <v-form>
+      {{ nullDatetime }}
       <v-row dense>
         <v-col cols="12" md="12">
           <v-textarea
@@ -114,6 +115,10 @@
             dense
           ></v-text-field>
         </v-col>
+
+        <v-col cols="12" md="12">
+          <DateTimePicker v-model="nullDatetime"></DateTimePicker>
+        </v-col>
       </v-row>
       <v-row class="d-flex justify-end" dense>
         <v-btn color="success " dark class="mx-1 mb-1" @click="onSubmit" tile>
@@ -127,13 +132,15 @@
 <script>
 import FabPanelToggle from '@/components/fab/panel/FabPanelToggle.vue';
 import formatDateMixin from '@/mixins/formatDateMixin';
+import DateTimePicker from '@/components/fab/fields/DateTimePicker.vue';
 
 export default {
   name: 'Detail1',
-  components: { FabPanelToggle },
+  components: { FabPanelToggle, DateTimePicker },
   mixins: [formatDateMixin],
   data() {
     return {
+      nullDatetime: '',
       menudate: false,
       field1: 'Texto Exemplo',
       field3: 'Texto Exemplo',
