@@ -1,5 +1,6 @@
 <template>
   <v-form ref="panelRegistered">
+    TESTE
     <v-expansion-panels v-model="panel" multiple>
       <v-expansion-panel v-for="(item, index) in dataTable" :key="index">
         <v-expansion-panel-header>

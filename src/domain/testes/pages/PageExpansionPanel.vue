@@ -1,23 +1,38 @@
 <template>
-  <v-card class="d-flex flex-column flex-grow-1">
-    <v-card-text class="pt-0">
-      <!-- <div> -->
-      <!-- <h1>Painel Listagem Simples</h1> -->
-      <!-- <PanelCheckBox /> -->
-      <!-- <PanelListagemSimples /> -->
-      <!-- <PanelListagemMultipla /> -->
-      <!-- </div> -->
-      <!-- <div> -->
-      <!-- <h1>Painel Listagem Múltipla</h1> -->
-      <PanelListagemMultiplaCheckBox />
-      <!-- </div> -->
-      <v-divider class="my-2"></v-divider>
-      <v-icon class="mr-2" small> mdi-clock </v-icon>
-      <span class="text-caption grey--text font-weight-light"
-        >last registration: {{ new Date() }}</span
-      >
-    </v-card-text>
-  </v-card>
+  <div class="d-flex flex-column flex-grow-1">
+    <v-card
+      class="d-flex flex-column flex-grow-1 mb-1 color: light-blue lighten-4"
+    >
+      <v-card-title>Painel com coluna seleção </v-card-title>
+
+      <v-card-text class="pt-0">
+        <!-- <div> -->
+        <!-- <h1>Painel Listagem Simples</h1> -->
+        <!-- <PanelCheckBox /> -->
+        <!-- <PanelListagemSimples /> -->
+        <!-- <PanelListagemMultipla /> -->
+        <!-- </div> -->
+        <!-- <div> -->
+        <!-- <h1>Painel Listagem Múltipla</h1> -->
+        <PanelListagemMultiplaCheckBox />
+        <!-- </div> -->
+        <v-divider class="my-2"></v-divider>
+        <v-icon class="mr-2" small> mdi-clock </v-icon>
+        <span class="text-caption grey--text font-weight-light"
+          >last registration: {{ new Date() }}</span
+        >
+      </v-card-text>
+    </v-card>
+    <v-spacer />
+    <v-card
+      class="d-flex flex-column flex-grow-1 mt-1 color: light-green lighten-4"
+    >
+      <v-card-title>Painel com coluna checkbox </v-card-title>
+      <v-card-text>
+        <PanelListagemMultiplaColunaCheckBox />
+      </v-card-text>
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -25,6 +40,7 @@ import PanelCheckBox from '../panel/PanelCheckBox.vue';
 import PanelListagemSimples from '../panel/PanelListagemSimples.vue';
 import PanelListagemMultipla from '../panel/PanelListagemMultipla.vue';
 import PanelListagemMultiplaCheckBox from '../panel/PanelListagemMultiplaCheckBox.vue';
+import PanelListagemMultiplaColunaCheckBox from '../panel/PanelListagemMultiplaColunaCheckBox.vue';
 import TableUsuario from '../tables/TableUsuario.vue';
 
 export default {
@@ -39,6 +55,8 @@ export default {
     PanelListagemMultiplaCheckBox,
     // eslint-disable-next-line vue/no-unused-components
     TableUsuario,
+    // eslint-disable-next-line vue/no-unused-components
+    PanelListagemMultiplaColunaCheckBox,
   },
   data() {
     return {

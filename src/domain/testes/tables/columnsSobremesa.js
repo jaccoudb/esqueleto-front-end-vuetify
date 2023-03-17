@@ -35,6 +35,12 @@ const columns = [
     sortable: false,
     value: 'iron',
   },
+  {
+    text: 'Box',
+    align: 'start',
+    sortable: false,
+    value: 'box',
+  },
 ];
 
 export default columns;

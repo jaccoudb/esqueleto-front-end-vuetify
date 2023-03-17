@@ -11,7 +11,8 @@
           "protein": "4.0",
           "iron": "1%",
           "disabled": false,
-          "id": 1
+          "id": 1,
+          "box": false
         },
         {
           "name": "Ice cream sandwich",
@@ -21,7 +22,8 @@
           "protein": "4.3",
           "iron": "1%",
           "disabled": false,
-          "id": 2
+          "id": 2,
+          "box": false
         },
         {
           "name": "Eclair",
@@ -31,7 +33,8 @@
           "protein": "6.0",
           "iron": "7%",
           "disabled": false,
-          "id": 3
+          "id": 3,
+          "box": false
         },
         {
           "name": "Cupcake",
@@ -41,7 +44,8 @@
           "protein": "4.3",
           "iron": "8%",
           "disabled": false,
-          "id": 4
+          "id": 4,
+          "box": false
         },
         {
           "name": "Gingerbread",
@@ -51,7 +55,8 @@
           "protein": "3.9",
           "iron": "16%",
           "disabled": false,
-          "id": 5
+          "id": 5,
+          "box": false
         }
       ]
     },
@@ -66,7 +71,8 @@
           "protein": "0.0",
           "iron": "0%",
           "disabled": false,
-          "id": 1
+          "id": 1,
+          "box": false
         },
         {
           "name": "Lollipop",
@@ -76,7 +82,8 @@
           "protein": "0",
           "iron": "2%",
           "disabled": false,
-          "id": 1
+          "id": 1,
+          "box": false
         },
         {
           "name": "Honeycomb",
@@ -86,7 +93,8 @@
           "protein": "6.5",
           "iron": "45%",
           "disabled": false,
-          "id": 1
+          "id": 1,
+          "box": false
         },
         {
           "name": "Donut",
@@ -96,7 +104,8 @@
           "protein": "4.9",
           "iron": "22%",
           "disabled": false,
-          "id": 1
+          "id": 1,
+          "box": false
         }
       ]
     }
