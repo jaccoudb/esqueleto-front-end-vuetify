@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column flex-grow-1">
     <v-card
-      class="d-flex flex-column flex-grow-1 mb-1 color: light-blue lighten-4"
+      class="d-flex flex-column flex-grow-1 mb-1 color: red lighten-4 lighten-4"
     >
       <v-card-title>Painel com coluna seleção </v-card-title>
 
@@ -11,16 +11,26 @@
         <!-- <PanelCheckBox /> -->
         <!-- <PanelListagemSimples /> -->
         <!-- <PanelListagemMultipla /> -->
+        <PanelListagemMultiplaFlags />
         <!-- </div> -->
         <!-- <div> -->
         <!-- <h1>Painel Listagem Múltipla</h1> -->
-        <PanelListagemMultiplaCheckBox />
+        <!-- <PanelListagemMultiplaCheckBox /> -->
         <!-- </div> -->
         <v-divider class="my-2"></v-divider>
         <v-icon class="mr-2" small> mdi-clock </v-icon>
         <span class="text-caption grey--text font-weight-light"
           >last registration: {{ new Date() }}</span
         >
+      </v-card-text>
+    </v-card>
+     <v-spacer />
+    <v-card
+      class="d-flex flex-column flex-grow-1 mt-1 color: light-blue lighten-4"
+    >
+      <v-card-title>Painel com coluna seleção </v-card-title>
+      <v-card-text>
+        <PanelListagemMultiplaCheckBox />
       </v-card-text>
     </v-card>
     <v-spacer />
@@ -39,6 +49,7 @@
 import PanelCheckBox from '../panel/PanelCheckBox.vue';
 import PanelListagemSimples from '../panel/PanelListagemSimples.vue';
 import PanelListagemMultipla from '../panel/PanelListagemMultipla.vue';
+import PanelListagemMultiplaFlags from '../panel/PanelListagemMultiplaFlags.vue';
 import PanelListagemMultiplaCheckBox from '../panel/PanelListagemMultiplaCheckBox.vue';
 import PanelListagemMultiplaColunaCheckBox from '../panel/PanelListagemMultiplaColunaCheckBox.vue';
 import TableUsuario from '../tables/TableUsuario.vue';
@@ -51,6 +62,8 @@ export default {
     PanelListagemSimples,
     // eslint-disable-next-line vue/no-unused-components
     PanelListagemMultipla,
+    // eslint-disable-next-line vue/no-unused-components
+    PanelListagemMultiplaFlags,
     // eslint-disable-next-line vue/no-unused-components
     PanelListagemMultiplaCheckBox,
     // eslint-disable-next-line vue/no-unused-components
