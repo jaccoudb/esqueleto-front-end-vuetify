@@ -18,7 +18,26 @@
             </v-card>
             <v-flex cols1></v-flex>
             <v-flex cols11 align-self-center="true" class="pr-2">
+              <!-- <v-badge avatar icon="mdi-lock">
+                <strong v-html="linha.name"></strong>
+              </v-badge> -->
               <strong v-html="linha.name"></strong>
+              <!-- <sup>
+                <v-icon x-small v-if="linha.alert">mdi-tooltip-edit</v-icon>
+                <v-icon x-small v-else color="white">mdi-circle</v-icon>
+              </sup> -->
+              <!-- <sup> <v-icon x-small>mdi-chat-processing</v-icon></sup> -->
+              <!-- <v-badge dark overlap content="new" color="blue"> -->
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <v-icon v-on="on" v-if="linha.alert" class="ml-2"
+                    >mdi-tooltip-edit</v-icon
+                  >
+                  <v-icon v-else class="ml-2" color="white">mdi-circle</v-icon>
+                </template>
+                <span>{{ 'Interação Técnica' }}</span>
+              </v-tooltip>
+              <!-- </v-badge> -->
             </v-flex>
           </v-layout>
         </v-expansion-panel-header>
@@ -36,6 +55,7 @@
             @toggle-select-all="allRowsChanged($event, indice)"
             @input="enterSelect($event, linha.body, indice)"
           >
+            <!-- CheckBox Cabeçalho -->
             <template v-slot:[`header.data-table-select`]="{ on, props }">
               <v-checkbox
                 :input-value="props.value"
@@ -44,8 +64,21 @@
                 @update:indeterminate="
                   updateCheckBox($event, indice, linha.body, selected)
                 "
+                v-model="checkBoxHeader[indice]"
+                color="green"
               >
               </v-checkbox>
+            </template>
+            <!-- CheckBox Linha Individual -->
+            <template
+              v-slot:[`item.data-table-select`]="{ item, isSelected, select }"
+            >
+              <v-simple-checkbox
+                :disabled="item.disabled"
+                :v-model="item.disabled ? item.disabled : isSelected"
+                :value="item.disabled ? item.disabled : isSelected"
+                @input="select($event)"
+              ></v-simple-checkbox>
             </template>
             <!--  -->
             <template v-slot:[`item.box`]="{ item }">
@@ -57,6 +90,7 @@
             </template>
             <!--  -->
           </v-data-table>
+          <!--  -->
           <v-row dense class="ma-2">
             <v-card
               class="overflow-y-auto"
@@ -121,12 +155,31 @@ export default {
     this.headers = columns;
     this.dataTable = this.sobremesaI.dataTable;
     this.checkBoxTitle = Array(this.dataTable.length).fill(false);
+    this.checkBoxHeader = Array(this.dataTable.length).fill(false);
     this.checkBoxInteracoes = Array(this.dataTable.length).fill(false);
     this.selectArray = Array(this.dataTable.length).fill(null);
+    this.dataTable.forEach((el1, i) => {
+      const ocorrencia = el1.body.reduce((j, el2) => {
+        if (el2.disabled) {
+          return j + 1;
+        } else {
+          return j;
+        }
+      }, 0);
+      if (ocorrencia < el1.body.length) {
+        this.checkBoxHeader[i] = false;
+        this.checkBoxTitle[i] = false;
+      } else {
+        this.checkBoxHeader[i] = true;
+        this.checkBoxTitle[i] = true;
+      }
+      console.log(i + ' ' + ocorrencia);
+    }, 0);
   },
   data() {
     return {
       checkBoxTitle: [],
+      checkBoxHeader: [],
       checkBoxInteracoes: [],
       headers: columns,
       itemsPerPage: 10,
