@@ -1,5 +1,17 @@
 <template>
   <v-form ref="panelRegistered">
+    <v-text-field v-model="search" label="Searching"></v-text-field>
+    <v-card class="pt-3 py-1" v-if="dataTable.length == 0">
+      <v-alert
+        type="info"
+        class="mx-2 text-justify"
+        dense
+        outlined
+        transition="scale-transition"
+      >
+       {{ $t('$vuetify.dataIterator.noResultsText') }}
+      </v-alert>
+    </v-card>
     <v-expansion-panels v-model="panel" multiple>
       <v-expansion-panel v-for="(item, index) in dataTable" :key="index">
         <v-expansion-panel-header>
@@ -45,21 +57,21 @@
 
 <script>
 import sobremesaI from '../tables/sobremesaI.json';
-import columns from '../tables/columnsSobremesa';
 
 export default {
   computed: {
     dataTable() {
-      return this.sobremesaI.dataTable;
+      const normalizedPartialString = this.search.toLowerCase(); // Convertendo para minúsculas para ignorar a diferença entre maiúsculas e minúsculas
+      return this.sobremesaI.dataTable.filter((item) => {
+        const valorItem = String(item['name']).toLowerCase(); // Convertendo para minúsculas
+        console.log(valorItem.includes(normalizedPartialString));
+        return valorItem.includes(normalizedPartialString);
+      });
     },
-  },
-  created() {
-    this.headers = columns;
-    console.log(this.body);
   },
   data() {
     return {
-      headers: columns,
+      search: '',
       sobremesaI: sobremesaI,
       itemsPerPage: 10,
       panel: [],
@@ -70,58 +82,6 @@ export default {
       showSelect: true,
       checkbox: [],
       badg: false,
-      body: [
-        {
-          name: 'Frozen Yogurt',
-          calories: '159',
-          fat: '6.0',
-          carbs: '24',
-          protein: '4.0',
-          iron: '1%',
-          disabled: false,
-          id: 1,
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: '237',
-          fat: '9.0',
-          carbs: '37',
-          protein: '4.3',
-          iron: '1%',
-          disabled: false,
-          id: 2,
-        },
-        {
-          name: 'Eclair',
-          calories: '262',
-          fat: '16.0',
-          carbs: '23',
-          protein: '6.0',
-          iron: '7%',
-          disabled: false,
-          id: 3,
-        },
-        {
-          name: 'Cupcake',
-          calories: '305',
-          fat: '3.7',
-          carbs: '67',
-          protein: '4.3',
-          iron: '8%',
-          disabled: false,
-          id: 4,
-        },
-        {
-          name: 'Gingerbread',
-          calories: '356',
-          fat: '16.0',
-          carbs: '49',
-          protein: '3.9',
-          iron: '16%',
-          disabled: false,
-          id: 5,
-        },
-      ],
     };
   },
   methods: {
